@@ -1,0 +1,61 @@
+.board-view__content {
+    display: flex;
+    flex-grow: 1;
+    /* background-color: pink; */
+    height: calc(100vh - (44px + 56px));
+    padding: 0px 55px 10px;
+    /* overflow-x: auto; */
+    flex-direction: column;
+    width: 100%;
+}
+
+.add-task-button {
+    display: flex;
+    gap: .5rem;
+    cursor: pointer;
+    /* background-color: rgb(207, 207, 207); */
+}
+
+.section-board {
+    /* background-color: rgb(205, 221, 162); */
+    background-color: #fff;
+}
+
+.section-board__view-header {
+    background-color: #fff;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+.section-board.view {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 280px;
+    max-height: 100%;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.section-board.add-button {
+    width: 280px;
+    background-color: #fff;
+}
+
+.section-board__cards {
+    /* background-color: rgb(78, 231, 255); */
+    background-color: #fff;
+    padding: 0 8px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 500px;
+}
+
+.section-board__footer {
+    min-height: 44px;
+    border-top: 1px solid rgba(0, 0, 0, .12);
+    background-color: #fff;
+    display: flex;
+    flex: 0 0 auto;
+    z-index: 1;
+}

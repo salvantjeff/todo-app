@@ -1,0 +1,67 @@
+.section-board__todo-card {
+    padding: 1em;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    border-radius: 0.8rem;
+    border: 1px solid rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 4%);
+    width: 260px;
+    margin: 0 0 10px;
+    cursor: pointer;
+}
+
+.todo_details {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.todo_details_menu {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0.5em;
+}
+
+.more-details-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: .125rem .5rem .5rem;
+    border-radius: 1rem;
+    background-color: #fff;
+}
+
+.more-details-button {
+    background-color: #ebebeb;
+}
+
+.todo_details_contents {
+    display: grid;
+    gap: .5rem;
+}
+
+.todo_description {
+    font-size: 0.8rem;
+    color: #bdbdbd;
+}
+
+.due_date {
+    font-size: 0.9rem;
+    color: #ffb057;
+}
+
+.priority-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.edit_button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #ebebeb;
+}
