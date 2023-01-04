@@ -1,0 +1,23 @@
+.nav-bar {
+    background-color: rgb(255, 129, 129);
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    align-items: center;
+}
+
+.left-buttons,
+.right-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+}
+
+.profile-image-container {
+    background-color: #fff;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+}
