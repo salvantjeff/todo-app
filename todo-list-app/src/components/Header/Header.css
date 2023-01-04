@@ -1,0 +1,10 @@
+header {
+    padding: 36px 55px 20px;
+}
+
+.current-date {
+    font-size: .85rem;
+    margin-left: .5rem;
+    font-weight: 500;
+    color: rgb(160, 160, 160);
+}

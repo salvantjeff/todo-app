@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.agenda-view {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}

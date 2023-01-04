@@ -1,10 +1,20 @@
 import './App.css';
+import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
     <div className="App">
       <NavBar />
+      <div className="content-wrapper">
+        <main className="main-content">
+          <div className="main-content__wrapper">
+            <div className="agenda-view">
+              <Header />
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
