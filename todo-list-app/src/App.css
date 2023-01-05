@@ -12,9 +12,15 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    background-color: pink;
+    background-color: rgb(255, 255, 255);
     position: fixed;
     top: 44px;
     width: 100%;
     height: 100%;
+}
+
+@media (min-width: 600px) {
+    .agenda-view {
+        margin-left: 305px;
+    }
 }
