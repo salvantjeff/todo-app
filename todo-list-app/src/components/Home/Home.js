@@ -7,6 +7,12 @@ function Home() {
     console.log(TodosList);
     const [todos, setTodos] = useState(TodosList);
 
+    function handleTodoComplete(e) {
+        const cardId = e.target.dataset.id;
+        const newTodos = todos.filter(todo => todo.id !== cardId);
+        setTodos(newTodos);
+    };
+
     return (
         <div className="board-view__content">
             <section className="section-board add-button">
@@ -22,7 +28,11 @@ function Home() {
                 <div className="section-board__cards">
                     {todos.map((todo => {
                         return (
-                            <TodoCard key={todo.id} todo={todo}/>
+                            <TodoCard 
+                                key={todo.id} 
+                                todo={todo}
+                                handleTodoComplete={handleTodoComplete}
+                            />
                         );
                     }))}                    
                 </div>

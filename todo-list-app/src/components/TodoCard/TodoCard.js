@@ -1,9 +1,13 @@
 import './TodoCard.css';
 
-function TodoCard({ todo }) {
+function TodoCard({ todo, handleTodoComplete }) {
     return(
         <div className="section-board__todo-card">
-            <div className="priority-checkbox"></div>
+            <div 
+                onClick={handleTodoComplete} 
+                className="priority-checkbox" 
+                data-id={todo.id}
+            ></div>
             <div className="todo_details">
                 <div className="todo_details_contents">
                     <p className="todo_title">{todo.name}</p>
