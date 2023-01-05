@@ -19,8 +19,8 @@ body {
     height: 100%;
     margin-left: 0;
     transition:
-        margin-left .1s ease-out,
-        margin-left .5s ease-in;
+        margin-left 1s cubic-bezier(.4, 0, .2, 1),
+        margin-left 1s cubic-bezier(.4, 0, .2, 1);
 }
 
 .active-menu .agenda-view {

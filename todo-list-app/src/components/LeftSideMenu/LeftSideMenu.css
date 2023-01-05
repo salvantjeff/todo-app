@@ -15,7 +15,7 @@
     visibility: hidden;
     transform: translateX(-305px);
     transition:
-        transform 1s cubic-bezier(.4, 0, .2, 1),
+        transform .85s cubic-bezier(.4, 0, .2, 1),
         visibility 1s ease-out;
 }
 
