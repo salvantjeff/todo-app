@@ -17,8 +17,8 @@ function Home() {
         <div className="board-view__content">
             <section className="section-board add-button">
                 <div className="add-task-button">
-                <p>+</p>
-                <p>Add task</p>
+                    <p>+</p>
+                    <p>Add task</p>
                 </div>
             </section>
             <section className="section-board view">
