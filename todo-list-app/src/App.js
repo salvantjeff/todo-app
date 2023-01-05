@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import LeftSideMenu from './components/LeftSideMenu/LeftSideMenu';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
             <div className="agenda-view">
               <Header />
               <Home />
+              <LeftSideMenu />
             </div>
           </div>
         </main>
