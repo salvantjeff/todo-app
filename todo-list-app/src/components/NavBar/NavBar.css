@@ -16,7 +16,11 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+}
 
+.left-buttons>*,
+.right-buttons>* {
+    cursor: pointer;
 }
 
 .profile-image-container {

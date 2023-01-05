@@ -17,10 +17,22 @@ body {
     top: 44px;
     width: 100%;
     height: 100%;
+    margin-left: 0;
+    transition:
+        margin-left 1s cubic-bezier(.4, 0, .2, 1),
+        margin-left 1s cubic-bezier(.4, 0, .2, 1);
+}
+
+.active-menu .agenda-view {
+    margin-left: 305px;
 }
 
 @media (min-width: 600px) {
     .agenda-view {
         margin-left: 305px;
+    }
+
+    .active-menu .agenda-view {
+        margin-left: 0;
     }
 }
