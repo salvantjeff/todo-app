@@ -1,9 +1,14 @@
 .nav-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
     background-color: rgb(255, 129, 129);
     display: flex;
     justify-content: space-between;
     padding: .5rem 1rem;
     align-items: center;
+    height: 44px;
 }
 
 .left-buttons,
