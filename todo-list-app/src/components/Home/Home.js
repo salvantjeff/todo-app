@@ -1,9 +1,12 @@
 import TodoCard from '../TodoCard/TodoCard';
 import './Home.css';
 import TodosList from '../../data/TodosList.json';
+import { useState } from 'react';
 
 function Home() {
     console.log(TodosList);
+    const [todos, setTodos] = useState(TodosList);
+
     return (
         <div className="board-view__content">
             <section className="section-board add-button">
@@ -17,14 +20,11 @@ function Home() {
                     <p>Overdue <span>9</span></p>
                 </div>
                 <div className="section-board__cards">
-                    <TodoCard />
-                    <TodoCard />
-                    <TodoCard />
-                    <TodoCard />
-                    <TodoCard />
-                    <TodoCard />
-                    <TodoCard />
-                    <TodoCard />
+                    {todos.map((todo => {
+                        return (
+                            <TodoCard key={todo.id} todo={todo}/>
+                        );
+                    }))}                    
                 </div>
                 <footer className="section-board__footer"></footer>
             </section>
