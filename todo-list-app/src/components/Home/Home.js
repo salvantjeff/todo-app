@@ -1,7 +1,9 @@
 import TodoCard from '../TodoCard/TodoCard';
 import './Home.css';
+import TodosList from '../../data/TodosList.json';
 
 function Home() {
+    console.log(TodosList);
     return (
         <div className="board-view__content">
             <section className="section-board add-button">
