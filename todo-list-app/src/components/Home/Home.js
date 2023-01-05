@@ -1,11 +1,12 @@
 import TodoCard from '../TodoCard/TodoCard';
 import './Home.css';
 import TodosList from '../../data/TodosList.json';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Home() {
     console.log(TodosList);
     const [todos, setTodos] = useState(TodosList);
+    const [addTaskFormActive, setAddFormTaskActive] = useState(false);
 
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
@@ -13,10 +14,22 @@ function Home() {
         setTodos(newTodos);
     };
 
+    function handleAddTaskFormActive() {
+        setAddFormTaskActive(!addTaskFormActive);
+    };
+
+    useEffect(() => {
+        if (addTaskFormActive) {
+            document.body.classList.add('addTaskFormActive');
+        } else {
+            document.body.classList.remove('addTaskFormActive');
+        };
+    }, [addTaskFormActive]);
+
     return (
         <div className="board-view__content">
             <section className="section-board add-button">
-                <div className="add-task-button">
+                <div onClick={handleAddTaskFormActive} className="add-task-button">
                     <p>+</p>
                     <p>Add task</p>
                 </div>
