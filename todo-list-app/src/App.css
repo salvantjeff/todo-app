@@ -23,8 +23,16 @@ body {
         margin-left .5s ease-in;
 }
 
+.active-menu .agenda-view {
+    margin-left: 305px;
+}
+
 @media (min-width: 600px) {
     .agenda-view {
         margin-left: 305px;
+    }
+
+    .active-menu .agenda-view {
+        margin-left: 0;
     }
 }
