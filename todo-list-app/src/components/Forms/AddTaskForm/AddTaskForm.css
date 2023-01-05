@@ -1,0 +1,83 @@
+button {
+    cursor: pointer;
+    font: inherit;
+}
+
+input {
+    font: inherit;
+    display: block;
+    width: 100%;
+    padding: 0.5em;
+    outline: none;
+    border: none;
+}
+
+.taskForm {
+    background-color: #fff;
+    padding: 1em;
+    display: grid;
+    gap: 1em;
+    width: clamp(350px, 100vw, 600px);
+    border-radius: 0.8rem;
+    box-shadow: 0 0 3px #bdbdbd;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 2;
+}
+
+.taskForm_area {
+    padding: 1em;
+    border-radius: 0.8rem;
+    border: 1px solid #bdbdbd;
+    display: grid;
+    gap: 1em;
+}
+
+.input_fields__task {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.taskForm_area__extra_fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left_extra_fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+.due_date__field,
+.bin__field,
+.priority__field {
+    border: 1px solid #bdbdbd;
+    padding: 0.5em 1em;
+    border-radius: 1rem;
+    background-color: transparent;
+    color: #757575;
+}
+
+.taskForm__buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.cancel__button {
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 1rem;
+    margin-right: 1em;
+}
+
+.add_task__button {
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 1rem;
+    background-color: #e390fc;
+    color: white;
+}
