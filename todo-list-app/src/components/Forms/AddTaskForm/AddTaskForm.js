@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import './AddTaskForm.css';
-import { v4 as uuidv4 } from 'uuid';
 
-function AddTaskForm({ handleSubmitNewTask }) {
+function AddTaskForm({ onSubmit, addTask, setAddTask }) {
     const [priorityStatus, setPriorityStatus] = useState(false);
 
     useEffect(() => {
@@ -17,14 +16,6 @@ function AddTaskForm({ handleSubmitNewTask }) {
         setPriorityStatus(!priorityStatus);
     };
 
-    const [addTask, setAddTask] = useState({
-        name: '',
-        description: '',
-        date: '',
-        id: '',
-        priority: 4,
-    });
-    
     const [priorities, setPriorities] = useState(prioritiesList);
 
     function handleChange(e) {
@@ -65,7 +56,7 @@ function AddTaskForm({ handleSubmitNewTask }) {
     }, [priorities]);
 
     return (
-        <form className='taskForm'>
+        <form onSubmit={onSubmit} className='taskForm'>
             <div className='taskForm_area'>
                 <div className='input_fields'>
                     <div className='input_fields__task'>

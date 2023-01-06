@@ -2,11 +2,20 @@ import TodoCard from '../TodoCard/TodoCard';
 import './Home.css';
 import TodosList from '../../data/TodosList.json';
 import { useEffect, useState } from 'react';
+import AddTaskForm from '../Forms/AddTaskForm/AddTaskForm';
+import { v4 as uuidv4 } from 'uuid';
 
 function Home() {
     console.log(TodosList);
     const [todos, setTodos] = useState(TodosList);
     const [addTaskFormActive, setAddFormTaskActive] = useState(false);
+    const [addTask, setAddTask] = useState({
+        name: '',
+        description: '',
+        date: '',
+        id: uuidv4(),
+        priority: 4,
+    });
 
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
@@ -25,6 +34,24 @@ function Home() {
             document.body.classList.remove('addTaskFormActive');
         };
     }, [addTaskFormActive]);
+
+    function handleAddNewTask(e) {
+        e.preventDefault();
+        console.log('Adding new task...');
+        const newTodos = [
+            ...todos,
+            addTask
+        ];
+        setTodos(newTodos);
+        setAddTask({
+            name: '',
+            description: '',
+            date: '',
+            id: uuidv4(),
+            priority: 4,
+        });
+        setAddFormTaskActive(false);
+    };
 
     return (
         <div className="board-view__content">
@@ -51,6 +78,11 @@ function Home() {
                 </div>
                 <footer className="section-board__footer"></footer>
             </section>
+            <AddTaskForm 
+                onSubmit={handleAddNewTask}
+                addTask={addTask}
+                setAddTask={setAddTask}
+            />
         </div>
     );
 };

@@ -16,7 +16,7 @@ function App() {
               <Header />
               <Home />
               <LeftSideMenu />
-              <AddTaskForm />
+              {/* <AddTaskForm /> */}
             </div>
           </div>
         </main>
