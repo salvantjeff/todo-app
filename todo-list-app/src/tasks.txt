@@ -1,1 +1,2 @@
 1. if user clicks on menu button and width is for mobile then add the overlay and change animation
+2. Have a separate add task button form dropdown close to nav bar add button - instead of using the one from the bottom
