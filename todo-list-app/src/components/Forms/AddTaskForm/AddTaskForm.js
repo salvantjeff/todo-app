@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './AddTaskForm.css';
+import { v4 as uuidv4 } from 'uuid';
 
 function AddTaskForm() {
     const [priorityStatus, setPriorityStatus] = useState(false);
@@ -16,6 +17,18 @@ function AddTaskForm() {
         setPriorityStatus(!priorityStatus);
     };
 
+    const [addTask, setAddTask] = useState({
+        name: '',
+        description: '',
+        date: '',
+        id: '',
+        priority: 4,
+    });
+
+    function handleChange(e) {
+        console.log(e.target.name);
+    };
+
     return (
         <form className='taskForm'>
             <div className='taskForm_area'>
@@ -24,16 +37,20 @@ function AddTaskForm() {
                         <input 
                             id='task_name'
                             type='text'
-                            name='task_name'
+                            name='name'
                             placeholder='e.g. Read every day'
+                            value={addTask.name}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='input_fields__description'>
                         <input 
                             id='task_description'
                             type='text'
-                            name='task_description'
+                            name='description'
                             placeholder='Description'
+                            value={addTask.description}
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
@@ -42,6 +59,9 @@ function AddTaskForm() {
                         <div className='due_date__field'>
                             <input 
                                 type='date'
+                                name='date'
+                                value={addTask.date}
+                                onChange={handleChange}
                             />
                         </div>
                         <button type='button' className="bin__field">Inbox</button>
@@ -52,7 +72,7 @@ function AddTaskForm() {
                             type='button' 
                             className="priority__field"
                         >
-                            priority
+                            {`Priority ${addTask.priority}`}
                             <PriorityOptions />
                         </button>
                     </div>
