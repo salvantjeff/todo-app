@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './AddTaskForm.css';
 
-function AddTaskForm({ onSubmit, addTask, setAddTask }) {
+function AddTaskForm({ onSubmit, addTask, setAddTask, setAddFormTaskActive }) {
     const [priorityStatus, setPriorityStatus] = useState(false);
 
     useEffect(() => {
@@ -54,6 +54,10 @@ function AddTaskForm({ onSubmit, addTask, setAddTask }) {
         };
         setAddTask(newAddTask);
     }, [priorities]);
+
+    function handleCancelClicked() {
+        setAddFormTaskActive(false);
+    };
 
     return (
         <form onSubmit={onSubmit} className='taskForm'>
@@ -108,7 +112,11 @@ function AddTaskForm({ onSubmit, addTask, setAddTask }) {
                 </div>
             </div>
             <div className="taskForm__buttons">
-                <button className="cancel__button">Cancel</button>
+                <button 
+                    onClick={handleCancelClicked} 
+                    className="cancel__button"
+                    type='button'
+                >Cancel</button>
                 <button type="submit" className="add_task__button">Add task</button>
             </div>
         </form>

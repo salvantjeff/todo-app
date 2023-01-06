@@ -82,6 +82,7 @@ function Home() {
                 onSubmit={handleAddNewTask}
                 addTask={addTask}
                 setAddTask={setAddTask}
+                setAddFormTaskActive={setAddFormTaskActive}
             />
         </div>
     );
