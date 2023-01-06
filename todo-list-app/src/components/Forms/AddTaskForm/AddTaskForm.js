@@ -1,7 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './AddTaskForm.css';
 
 function AddTaskForm() {
+    const [priorityStatus, setPriorityStatus] = useState(false);
+
+    useEffect(() => {
+        if (priorityStatus) {
+            document.body.classList.add('activePriorityPopUp');
+        } else {
+            document.body.classList.remove('activePriorityPopUp');
+        };
+    }, [priorityStatus]);
+
+    function handlePriorityClicked() {
+        setPriorityStatus(!priorityStatus);
+    };
+
     return (
         <form className='taskForm'>
             <div className='taskForm_area'>
@@ -33,7 +47,11 @@ function AddTaskForm() {
                         <button type='button' className="bin__field">Inbox</button>
                     </div>
                     <div className="right_extra_fields">
-                        <button type='button' className="priority__field">
+                        <button 
+                            onClick={handlePriorityClicked} 
+                            type='button' 
+                            className="priority__field"
+                        >
                             priority
                             <PriorityOptions />
                         </button>

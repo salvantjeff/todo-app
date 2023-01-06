@@ -127,3 +127,8 @@ input {
 .priority-option:hover {
     background-color: rgb(235, 235, 235);
 }
+
+.activePriorityPopUp .priority-options {
+    visibility: visible;
+    opacity: 1;
+}
