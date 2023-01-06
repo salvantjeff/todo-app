@@ -96,13 +96,32 @@ const prioritiesList = [
 function PriorityOptions() {
     const [priorities, setPriorities] = useState(prioritiesList);
 
+    function handleOptionSelected(e) {
+        const targetID = e.target.dataset.id;
+        const newPriorities = priorities.map(priority => {
+            if (priority.id === targetID) {
+                return {
+                    ...priority,
+                    status: 'selected',
+                };
+            };
+            return {
+                ...priority,
+                status: '',
+            };
+        });
+        setPriorities(newPriorities);
+    };
+
     return (
         <div className='priority-options'>
             {priorities.map(priority => {
                 return (
                     <div 
+                        onClick={handleOptionSelected}
                         key={priority.id} 
                         className={`priority-option ${priority.status}`}
+                        data-id={priority.id}
                     >
                         <div>Flag</div>
                         <p>{priority.name}</p>
