@@ -50,6 +50,7 @@ input {
 .taskForm_area__extra_fields {
     display: flex;
     justify-content: space-between;
+    font-size: .875rem;
 }
 
 .left_extra_fields {
@@ -66,6 +67,16 @@ input {
     border-radius: 1rem;
     background-color: transparent;
     color: #757575;
+    width: max-content;
+    cursor: pointer;
+}
+
+.due_date__field>* {
+    padding: 0;
+    width: max-content;
+    margin: 0;
+    color: #757575;
+    cursor: pointer;
 }
 
 .taskForm__buttons {
@@ -86,4 +97,33 @@ input {
     border-radius: 1rem;
     background-color: #e390fc;
     color: white;
+}
+
+.priority__field {
+    position: relative;
+}
+
+.priority-options {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: -120px;
+    left: -100px;
+    width: max-content;
+    color: #222;
+    max-height: 300px;
+    border-radius: .2rem;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 4%);
+    border: 1px solid rgb(230, 230, 230);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.priority-option {
+    display: flex;
+    gap: 10px;
+    padding: .5rem 1rem;
+}
+
+.priority-option:hover {
+    background-color: rgb(235, 235, 235);
 }

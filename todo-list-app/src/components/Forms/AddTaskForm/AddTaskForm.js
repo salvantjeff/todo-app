@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './AddTaskForm.css';
 
 function AddTaskForm() {
@@ -24,11 +25,18 @@ function AddTaskForm() {
                 </div>
                 <div className='taskForm_area__extra_fields'>
                     <div className='left_extra_fields'>
-                        <button className="due_date__field">Due date</button>
-                        <button className="bin__field">Inbox</button>
+                        <div className='due_date__field'>
+                            <input 
+                                type='date'
+                            />
+                        </div>
+                        <button type='button' className="bin__field">Inbox</button>
                     </div>
                     <div className="right_extra_fields">
-                        <button className="priority__field">priority</button>
+                        <button type='button' className="priority__field">
+                            priority
+                            <PriorityOptions />
+                        </button>
                     </div>
                 </div>
             </div>
@@ -37,6 +45,53 @@ function AddTaskForm() {
                 <button type="submit" className="add_task__button">Add task</button>
             </div>
         </form>
+    );
+};
+
+const prioritiesList = [
+    {
+        name: 'Priority 1',
+        icon: '',
+        id: 'first-priority',
+        status: '',
+    },
+    {
+        name: 'Priority 2',
+        icon: '',
+        id: 'second-priority',
+        status: '',
+    },
+    {
+        name: 'Priority 3',
+        icon: '',
+        id: 'third-priority',
+        status: '',
+    },
+    {
+        name: 'Priority 4',
+        icon: '',
+        id: 'fourth-priority',
+        status: '',
+    },
+];
+
+function PriorityOptions() {
+    const [priorities, setPriorities] = useState(prioritiesList);
+
+    return (
+        <div className='priority-options'>
+            {priorities.map(priority => {
+                return (
+                    <div 
+                        key={priority.id} 
+                        className={`priority-option ${priority.status}`}
+                    >
+                        <div>Flag</div>
+                        <p>{priority.name}</p>
+                    </div>
+                );
+            })}
+        </div>
     );
 };
 
