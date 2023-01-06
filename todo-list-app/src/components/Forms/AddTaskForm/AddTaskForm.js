@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './AddTaskForm.css';
 import { v4 as uuidv4 } from 'uuid';
 
-function AddTaskForm() {
+function AddTaskForm({ handleSubmitNewTask }) {
     const [priorityStatus, setPriorityStatus] = useState(false);
 
     useEffect(() => {
@@ -54,9 +54,12 @@ function AddTaskForm() {
 
     useEffect(() => {
         const [newPriorityValue] = [...priorities.filter(priority => priority.status === 'selected')];
-        const newAddTask = {
-            ...addTask,
-            priority: newPriorityValue.value,
+        let newAddTask = {...addTask};
+        if (newPriorityValue) {
+            newAddTask = {
+                ...addTask,
+                priority: newPriorityValue.value,
+            };
         };
         setAddTask(newAddTask);
     }, [priorities]);
