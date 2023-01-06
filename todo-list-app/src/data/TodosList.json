@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Read a book",
+        "description": "Minimum of 25 pages",
+        "date": "Wed Jan 4",
+        "id": "9e0088ec-37dd-4532-8d5d-e1c19f3acb6b",
+        "priority": 4
+    },
+    {
+        "name": "Meditate",
+        "description": "Use waking up app",
+        "date": "Wed Jan 4",
+        "id": "be86fcf3-8506-4d25-be3d-f2489089419d",
+        "priority": 4
+    },
+    {
+        "name": "Workout",
+        "description": "Push day! lets go!",
+        "date": "Wed Jan 4",
+        "id": "7a7a3a1c-3c5d-436f-b21a-529a458b3d19",
+        "priority": 4
+    }
+]

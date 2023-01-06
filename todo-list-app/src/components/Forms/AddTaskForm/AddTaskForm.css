@@ -1,0 +1,150 @@
+button {
+    cursor: pointer;
+    font: inherit;
+}
+
+input {
+    font: inherit;
+    display: block;
+    width: 100%;
+    padding: 0.5em;
+    outline: none;
+    border: none;
+}
+
+.taskForm {
+    background-color: #fff;
+    padding: 1em;
+    display: grid;
+    gap: 1em;
+    width: clamp(350px, 100vw, 600px);
+    border-radius: 0.8rem;
+    box-shadow: 0 0 3px #bdbdbd;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 2;
+    transform: translateY(100%);
+    transition: transform 400ms ease-in-out;
+    font-size: .875rem;
+}
+
+.addTaskFormActive .taskForm {
+    transform: translateY(0);
+}
+
+.taskForm_area {
+    padding: 1em;
+    border-radius: 0.8rem;
+    border: 1px solid #bdbdbd;
+    display: grid;
+    gap: 1em;
+}
+
+.input_fields__task {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.taskForm_area__extra_fields {
+    display: flex;
+    justify-content: space-between;
+    font-size: .875rem;
+}
+
+.left_extra_fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+.due_date__field,
+.bin__field,
+.priority__field {
+    border: 1px solid #bdbdbd;
+    padding: 0.5em 1em;
+    border-radius: 1rem;
+    background-color: transparent;
+    color: #757575;
+    width: max-content;
+    cursor: pointer;
+}
+
+.due_date__field>* {
+    padding: 0;
+    width: max-content;
+    margin: 0;
+    color: #757575;
+    cursor: pointer;
+}
+
+.taskForm__buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.cancel__button {
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 1rem;
+    margin-right: 1em;
+}
+
+.add_task__button {
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 1rem;
+    background-color: #e390fc;
+    color: white;
+}
+
+.priority__field {
+    position: relative;
+}
+
+.priority-options {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: -120px;
+    left: -100px;
+    width: max-content;
+    color: #222;
+    max-height: 300px;
+    border-radius: .2rem;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 4%);
+    border: 1px solid rgb(230, 230, 230);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.priority-option {
+    display: flex;
+    gap: 10px;
+    padding: .5rem 1rem;
+    position: relative;
+}
+
+.priority-option:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.priority-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+}
+
+.activePriorityPopUp .priority-options {
+    visibility: visible;
+    opacity: 1;
+}
+
+.priority-option.selected {
+    background-color: rgb(163, 165, 249);
+}
