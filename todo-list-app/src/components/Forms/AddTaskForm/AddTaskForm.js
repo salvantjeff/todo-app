@@ -24,10 +24,42 @@ function AddTaskForm() {
         id: '',
         priority: 4,
     });
+    
+    const [priorities, setPriorities] = useState(prioritiesList);
 
     function handleChange(e) {
-        console.log(e.target.name);
+        const newAddTask = {
+            ...addTask,
+            [e.target.name]: [e.target.value]
+        };
+        setAddTask(newAddTask);
     };
+
+    function handleOptionSelected(e) {
+        const targetID = e.target.dataset.id;
+        const newPriorities = priorities.map(priority => {
+            if (priority.id === targetID) {
+                return {
+                    ...priority,
+                    status: 'selected',
+                };
+            };
+            return {
+                ...priority,
+                status: '',
+            };
+        });
+        setPriorities(newPriorities);
+    };
+
+    useEffect(() => {
+        const [newPriorityValue] = [...priorities.filter(priority => priority.status === 'selected')];
+        const newAddTask = {
+            ...addTask,
+            priority: newPriorityValue.value,
+        };
+        setAddTask(newAddTask);
+    }, [priorities]);
 
     return (
         <form className='taskForm'>
@@ -73,7 +105,10 @@ function AddTaskForm() {
                             className="priority__field"
                         >
                             {`Priority ${addTask.priority}`}
-                            <PriorityOptions />
+                            <PriorityOptions 
+                                handleOptionSelected={handleOptionSelected}
+                                priorities={priorities}
+                            />
                         </button>
                     </div>
                 </div>
@@ -88,51 +123,32 @@ function AddTaskForm() {
 
 const prioritiesList = [
     {
-        name: 'Priority 1',
+        value: 1,
         icon: '',
         id: 'first-priority',
         status: '',
     },
     {
-        name: 'Priority 2',
+        value: 2,
         icon: '',
         id: 'second-priority',
         status: '',
     },
     {
-        name: 'Priority 3',
+        value: 3,
         icon: '',
         id: 'third-priority',
         status: '',
     },
     {
-        name: 'Priority 4',
+        value: 4,
         icon: '',
         id: 'fourth-priority',
         status: '',
     },
 ];
 
-function PriorityOptions() {
-    const [priorities, setPriorities] = useState(prioritiesList);
-
-    function handleOptionSelected(e) {
-        const targetID = e.target.dataset.id;
-        const newPriorities = priorities.map(priority => {
-            if (priority.id === targetID) {
-                return {
-                    ...priority,
-                    status: 'selected',
-                };
-            };
-            return {
-                ...priority,
-                status: '',
-            };
-        });
-        setPriorities(newPriorities);
-    };
-
+function PriorityOptions({ priorities, handleOptionSelected }) {
     return (
         <div className='priority-options'>
             {priorities.map(priority => {
@@ -144,7 +160,7 @@ function PriorityOptions() {
                         data-id={priority.id}
                     >
                         <div>Flag</div>
-                        <p>{priority.name}</p>
+                        <p>Priority {priority.value}</p>
                     </div>
                 );
             })}
