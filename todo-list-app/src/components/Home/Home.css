@@ -13,7 +13,12 @@
     display: flex;
     gap: .5rem;
     cursor: pointer;
+    width: max-content;
     /* background-color: rgb(207, 207, 207); */
+}
+
+.add-task-button:hover {
+    color: rgba(0, 0, 0, .5);
 }
 
 .section-board {
