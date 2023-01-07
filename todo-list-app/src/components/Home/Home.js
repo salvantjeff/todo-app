@@ -7,9 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Header from '../Header/Header';
 
 function Home({ todoSections, setTodoSections }) {
-    console.log(TodosList);
     const inboxID = todoSections[0].id;
-    // const [todos, setTodos] = useState(TodosList);
     const [addTaskFormActive, setAddFormTaskActive] = useState(false);
     const [addTask, setAddTask] = useState({
         name: '',
@@ -19,11 +17,6 @@ function Home({ todoSections, setTodoSections }) {
         priority: 4,
     });
 
-    // function handleTodoComplete(e) {
-    //     const cardId = e.target.dataset.id;
-    //     const newTodos = todos.filter(todo => todo.id !== cardId);
-    //     setTodos(newTodos);
-    // };
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
         const newTodoSections = todoSections.map(section => {
@@ -50,23 +43,6 @@ function Home({ todoSections, setTodoSections }) {
         };
     }, [addTaskFormActive]);
 
-    // function handleAddNewTask(e) {
-    //     e.preventDefault();
-    //     console.log('Adding new task...');
-    //     const newTodos = [
-    //         ...todos,
-    //         addTask
-    //     ];
-    //     setTodos(newTodos);
-    //     setAddTask({
-    //         name: '',
-    //         description: '',
-    //         date: '',
-    //         id: uuidv4(),
-    //         priority: 4,
-    //     });
-    //     setAddFormTaskActive(false);
-    // };
     function handleAddNewTask(e) {
         e.preventDefault();
         console.log('Adding new task...');
