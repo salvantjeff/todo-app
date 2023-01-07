@@ -128,6 +128,47 @@ function App() {
     setProjects(newUserProjects);
   };
 
+  useEffect(() => {
+    function addProjectsToInbox() {
+      let projectsToAdd = [];
+      for (let project of projects) {
+        for (let todo of project.data) {
+          if (!(todo.id in allTodosHashMap)) {
+            projectsToAdd.push(todo);
+          };
+        };
+      };
+      console.log('Projects to add: ', projectsToAdd);
+      const newTodoSections = todoSections.map(section => {
+        if (section.id === inboxID) {
+          return {
+            ...section,
+            data: [
+              ...section.data,
+              ...projectsToAdd,
+            ],
+          };
+        };
+        return section;
+      });
+      setTodoSections(newTodoSections);
+    };
+    addProjectsToInbox();
+  }, [projects]);
+
+  function createAllTodosHashMap() {
+    let hm = {};
+    const allTodosData = todoSections[0].data;
+    for (let todo of allTodosData) {
+      if (!(todo.id in hm)) {
+        hm[todo.id] = true;
+      }
+    };
+    return hm;
+  };
+  const allTodosHashMap = createAllTodosHashMap();
+  console.log('ALL TODOS HASH MAP: ',allTodosHashMap);
+
   return (
     <div className="App">
       <BrowserRouter>
