@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import AddTaskForm from './components/Forms/AddTaskForm/AddTaskForm';
 import Header from './components/Header/Header';
@@ -13,6 +13,7 @@ import TodoSections from './components/TodoSections/TodoSections';
 import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
 
 function App() {
+  const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
   const [projects, setProjects] = useState([
     {
       name: 'Personal',

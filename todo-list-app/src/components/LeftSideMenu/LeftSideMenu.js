@@ -88,6 +88,16 @@ function LeftSideMenu({
                                     </div>
                                 </div>
                                 </Link>
+                                // <div key={project.id} className="side-menu__projects-contents">
+                                //     <div onMouseOut={handleMouseOut} onMouseOver={handleOnHover} className="side-menu__section-item">
+                                //         <div className="section-item-details">
+                                //             <div>{project.icon}</div>
+                                //             <p>{project.name}</p>
+                                //         </div>
+                                //         <div className="section-item__count">{project.data.length}</div>
+                                //         <div onClick={handleRemoveProject} data-id={project.id} className="section-item__remove">-</div>
+                                //     </div>
+                                // </div>
                             );
                         })}
                     </div>

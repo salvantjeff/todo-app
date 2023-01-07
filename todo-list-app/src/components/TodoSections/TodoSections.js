@@ -78,7 +78,6 @@ function TodoSections({ todoSections, setTodoSections }) {
         return title;
     };
     const currentTitle = getTitle();
-    console.log(currentTitle);
     const [currTodos] = [...todoSections.filter(section => section.id === id)];
     return (
         <>
