@@ -84,7 +84,6 @@ function App() {
   };
 
   function closeProjectForm(e) {
-    console.log(e.target.className);
     if (e.target.className === 'project-form-overlay' ||
         e.target.className === 'popup_cancel') {
         setProjectFormStatus(false);
