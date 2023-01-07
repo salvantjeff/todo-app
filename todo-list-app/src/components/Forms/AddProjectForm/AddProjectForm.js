@@ -1,8 +1,8 @@
 import './AddProjectForm.css';
 
-function AddProjectForm() {
+function AddProjectForm({ closeProjectForm }) {
     return (
-        <div className='project-form-overlay'>
+        <div onClick={closeProjectForm} className='project-form-overlay'>
             <div className='project-form-wrapper'>
             <form className="add_project_form" action="#">
                 <h2 className="popup_message">Add a new project</h2>
@@ -16,7 +16,7 @@ function AddProjectForm() {
                 </div>
                 <div className="popup_buttons">
                     <button className="popup_submit" type="submit">Submit</button>
-                    <button className="popup_cancel" type='button'>Cancel</button>
+                    <button className="popup_cancel" type='button' onClick={closeProjectForm}>Cancel</button>
                     </div>
             </form>
             </div>

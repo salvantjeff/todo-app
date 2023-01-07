@@ -71,6 +71,26 @@ function App() {
     return todayTodos;
   };
   const todaysTodosCount = getTodaysTodosCount();
+
+  const [projectFormStatus, setProjectFormStatus] = useState(false);
+  if (projectFormStatus) {
+      document.body.classList.add('activeProjectForm');
+  } else {
+      document.body.classList.remove('activeProjectForm');
+  };
+
+  function showProjectForm() {
+      setProjectFormStatus(true);
+  };
+
+  function closeProjectForm(e) {
+    console.log(e.target.className);
+    if (e.target.className === 'project-form-overlay' ||
+        e.target.className === 'popup_cancel') {
+        setProjectFormStatus(false);
+    };
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -96,13 +116,14 @@ function App() {
                   projects={projects}
                   setProjects={setProjects}
                   todaysTodosCount={todaysTodosCount}
+                  showProjectForm={showProjectForm}
                 />
               </div>
             </div>
           </main>
         </div>
       </BrowserRouter>
-      <AddProjectForm />
+      <AddProjectForm closeProjectForm={closeProjectForm}/>
     </div>
   );
 }

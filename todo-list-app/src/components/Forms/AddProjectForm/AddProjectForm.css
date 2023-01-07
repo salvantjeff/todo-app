@@ -9,6 +9,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.activeProjectForm .project-form-overlay {
+    visibility: visible;
+    opacity: 1;
 }
 
 .project-form-wrapper {

@@ -6,12 +6,24 @@ function LeftSideMenu({
     todoSections, 
     projects,
     setProjects, 
-    todaysTodosCount 
+    todaysTodosCount,
+    showProjectForm 
 }) {
+    // const [projectFormStatus, setProjectFormStatus] = useState(false);
 
-    function handleAddNewProject() {
-        console.log('Adding new project');
-    };
+    // if (projectFormStatus) {
+    //     document.body.classList.add('activeProjectForm');
+    // } else {
+    //     document.body.classList.remove('activeProjectForm');
+    // };
+
+    // function showProjectForm() {
+    //     setProjectFormStatus(true);
+    // };
+
+    // function closeProjectForm() {
+    //     setProjectFormStatus(false);
+    // };
 
     return (
         <div className="left-side-menu__overlay">
@@ -50,7 +62,7 @@ function LeftSideMenu({
                         })}
                     </div>
                     <div className="side-menu__projects">
-                        <div className="side-menu__projects-title">
+                        <div onClick={showProjectForm} className="side-menu__projects-title">
                             <p>Projects</p>
                             <div>+</div>
                         </div>
