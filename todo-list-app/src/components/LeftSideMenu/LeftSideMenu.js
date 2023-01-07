@@ -24,6 +24,13 @@ function LeftSideMenu({
     // function closeProjectForm() {
     //     setProjectFormStatus(false);
     // };
+    function handleOnHover(e) {
+        e.target.classList.add('activeHover');
+    };
+
+    function handleMouseOut(e) {
+        e.target.classList.remove('activeHover');
+    };
 
     return (
         <div className="left-side-menu__overlay">
@@ -69,12 +76,13 @@ function LeftSideMenu({
                         {projects.map(project => {
                             return (
                                 <div key={project.id} className="side-menu__projects-contents">
-                                    <div className="side-menu__section-item">
+                                    <div onMouseOut={handleMouseOut} onMouseOver={handleOnHover} className="side-menu__section-item">
                                         <div className="section-item-details">
                                             <div>{project.icon}</div>
                                             <p>{project.name}</p>
                                         </div>
                                         <div className="section-item__count">{project.data.length}</div>
+                                        <div className="section-item__remove">-</div>
                                     </div>
                                 </div>
                             );
