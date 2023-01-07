@@ -1,11 +1,11 @@
 import './Header.css';
 
-function Header() {
+function Header({ currentTitle }) {
     return(
         <header>
             <div className="header-content">
                 <h2 className="section-heading">
-                    Today
+                    {currentTitle}
                     <span className="current-date">
                         Wed Jan 4
                     </span>

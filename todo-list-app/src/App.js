@@ -1,26 +1,93 @@
+import { useState } from 'react';
 import './App.css';
 import AddTaskForm from './components/Forms/AddTaskForm/AddTaskForm';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import LeftSideMenu from './components/LeftSideMenu/LeftSideMenu';
 import NavBar from './components/NavBar/NavBar';
+import TodosList from './data/TodosList.json';
+import { v4 as uuidv4 } from 'uuid';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProjectsDetail from './components/ProjectsDetail/ProjectsDetail';
+import TodoSections from './components/TodoSections/TodoSections';
 
 function App() {
+  const [projects, setProjects] = useState([
+    {
+      name: 'personal',
+      id: "0d67c5d0-ab6d-4e05-88cb-1981a1187f5a",
+      data: TodosList,
+      icon: 'o',
+    },
+  ]);
+
+  const [todoSections, setTodoSections] = useState([
+    {
+      name: 'Inbox',
+      id: "26a8cd00-0e2b-4c6c-b047-3373843d261a",
+      data: TodosList,
+      icon: '$',
+    },
+    {
+      name: 'Today',
+      id: "3ba46678-72b7-4bbd-a781-28201b31935e",
+      data: [],
+      icon: '%',
+    },
+  ]);
+
+  // Refactor by getting todaysTodos here and set as data in todoSections data prop
+  //chicken or egg situation
+  function getTodaysTodosCount() {
+    const currAllData = [...todoSections[0].data];
+    const today = (new Date()).toDateString();
+    let todayTodos = 0;
+    for (let item of currAllData) {
+        let formatDate;
+        if (Array.isArray(item.date)) {
+            [formatDate] = [...item.date];
+        } else {
+            formatDate = item.date;
+        };
+        formatDate = formatDate.replace(/-/, '/').replace(/-/, '/');
+        const currItem = (new Date(formatDate)).toDateString();
+        if (today === currItem) {
+            todayTodos += 1;
+        };
+    };
+    return todayTodos;
+  };
+  const todaysTodosCount = getTodaysTodosCount();
   return (
     <div className="App">
-      <NavBar />
-      <div className="content-wrapper">
-        <main className="main-content">
-          <div className="main-content__wrapper">
-            <div className="agenda-view">
-              <Header />
-              <Home />
-              <LeftSideMenu />
-              {/* <AddTaskForm /> */}
+      <BrowserRouter>
+        <NavBar />
+        <div className="content-wrapper">
+          <main className="main-content">
+            <div className="main-content__wrapper">
+              <div className="agenda-view">
+                {/* <Header /> */}
+                <Routes>
+                  <Route path='/app/today' element={<Home todoSections={todoSections} setTodoSections={setTodoSections}/>}/>
+                  <Route path='/projects/:id' element={<ProjectsDetail />}/>
+                  <Route 
+                    path='/sections/:id' 
+                    element={<TodoSections 
+                      todoSections={todoSections} 
+                      setTodoSections={setTodoSections}
+                    />}
+                  />
+                </Routes>
+                <LeftSideMenu 
+                  todoSections={todoSections}
+                  projects={projects}
+                  todaysTodosCount={todaysTodosCount}
+                />
+              </div>
             </div>
-          </div>
-        </main>
-      </div>
+          </main>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

@@ -58,7 +58,7 @@ function AddTaskForm({ onSubmit, addTask, setAddTask, setAddFormTaskActive }) {
     function handleCancelClicked() {
         setAddFormTaskActive(false);
     };
-
+    console.log(addTask.date);
     return (
         <form onSubmit={onSubmit} className='taskForm'>
             <div className='taskForm_area'>
