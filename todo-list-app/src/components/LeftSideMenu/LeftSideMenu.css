@@ -56,6 +56,24 @@
 .side-menu__projects-title {
     padding: 5px;
     font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    border-radius: .2rem;
+}
+
+.side-menu__projects-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.side-menu__projects-title:hover {
+    background-color: rgb(245, 245, 245);
 }
 
 .left-side-menu__overlay {

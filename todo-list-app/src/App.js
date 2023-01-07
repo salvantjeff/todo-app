@@ -14,8 +14,20 @@ import TodoSections from './components/TodoSections/TodoSections';
 function App() {
   const [projects, setProjects] = useState([
     {
-      name: 'personal',
+      name: 'Personal',
       id: "0d67c5d0-ab6d-4e05-88cb-1981a1187f5a",
+      data: TodosList,
+      icon: 'o',
+    },
+    {
+      name: 'Health',
+      id: "c8a41405-f84d-43c4-bfc2-467e11ad27fd",
+      data: TodosList,
+      icon: 'o',
+    },
+    {
+      name: 'School',
+      id: "7e84a0aa-2326-4666-a9e2-6ed5d581baef",
       data: TodosList,
       icon: 'o',
     },
@@ -81,6 +93,7 @@ function App() {
                 <LeftSideMenu 
                   todoSections={todoSections}
                   projects={projects}
+                  setProjects={setProjects}
                   todaysTodosCount={todaysTodosCount}
                 />
               </div>

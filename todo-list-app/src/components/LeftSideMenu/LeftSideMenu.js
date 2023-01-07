@@ -2,8 +2,13 @@ import { useState } from 'react';
 import './LeftSideMenu.css';
 import { Link } from 'react-router-dom';
 
-function LeftSideMenu({ todoSections, projects, todaysTodosCount }) {
-    
+function LeftSideMenu({ 
+    todoSections, 
+    projects,
+    setProjects, 
+    todaysTodosCount 
+}) {
+
     return (
         <div className="left-side-menu__overlay">
             <div className="left-side-menu">
@@ -41,7 +46,10 @@ function LeftSideMenu({ todoSections, projects, todaysTodosCount }) {
                         })}
                     </div>
                     <div className="side-menu__projects">
-                        <p className="side-menu__projects-title">Projects</p>
+                        <div className="side-menu__projects-title">
+                            <p>Projects</p>
+                            <div>+</div>
+                        </div>
                         {projects.map(project => {
                             return (
                                 <div key={project.id} className="side-menu__projects-contents">
