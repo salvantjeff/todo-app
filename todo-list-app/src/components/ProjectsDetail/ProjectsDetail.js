@@ -116,37 +116,6 @@ function ProjectsDetail({ projects, setProjects }) {
                />
             </div>
         }
-        {/* <div className="board-view__content">
-            <section className="section-board add-button">
-                <div onClick={handleAddTaskFormActive} className="add-task-button">
-                    <p>+</p>
-                    <p>Add task</p>
-                </div>
-            </section>
-            <section className="section-board view">
-                <div className="section-board__view-header">
-                    <p>Overdue <span>9</span></p>
-                </div>
-                <div className="section-board__cards">
-                    {currTodos.data.map(todo => {
-                        return (
-                            <TodoCard 
-                                key={todo.id} 
-                                todo={todo}
-                                handleTodoComplete={handleTodoComplete}
-                            />
-                        );
-                    })}
-                </div>
-                <footer className="section-board__footer"></footer>
-            </section>
-            <AddTaskForm 
-                onSubmit={handleAddNewTask}
-                addTask={addTask}
-                setAddTask={setAddTask}
-                setAddFormTaskActive={setAddFormTaskActive}
-            />
-        </div> */}
         </>
     );
 };
