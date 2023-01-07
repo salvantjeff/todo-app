@@ -105,6 +105,22 @@ function App() {
     setNewProject(newUserProject);
   };
 
+  function handleSubmitNewProject(e) {
+    e.preventDefault();
+    const newUserProjects = [
+      ...projects,
+      newProject,
+    ];
+    setProjects(newUserProjects);
+    setNewProject({
+      name: '',
+      id: uuidv4(),
+      data: [],
+      icon: 'o',
+    });
+    setProjectFormStatus(false);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -141,6 +157,7 @@ function App() {
         closeProjectForm={closeProjectForm}
         handleOnChange={handleOnChange}
         newProject={newProject}
+        onSubmit={handleSubmitNewProject}
       />
     </div>
   );
