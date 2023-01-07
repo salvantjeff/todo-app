@@ -9,6 +9,10 @@ function LeftSideMenu({
     todaysTodosCount 
 }) {
 
+    function handleAddNewProject() {
+        console.log('Adding new project');
+    };
+
     return (
         <div className="left-side-menu__overlay">
             <div className="left-side-menu">

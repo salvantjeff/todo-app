@@ -1,0 +1,56 @@
+.project-form-overlay {
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-form-wrapper {
+    position: absolute;
+}
+
+.add_project_popup {
+    background-color: white;
+    margin: auto;
+    border: none;
+    border-radius: 0.8em;
+}
+
+.add_project_form {
+    padding: 2rem;
+    display: grid;
+    gap: 1em;
+    background-color: #fff;
+    font-size: .875rem;
+    border-radius: .5rem;
+}
+
+#new_project_name {
+    box-shadow: inset 0 0 3px #bdbdbd;
+}
+
+.popup_buttons {
+    display: grid;
+    gap: 0.5em;
+    font-size: .875rem;
+}
+
+.popup_cancel {
+    padding: 0.5em 1em;
+    border-radius: 2em;
+    border: none;
+}
+
+.popup_submit {
+    padding: 0.5em 1em;
+    background-color: #00aaff;
+    color: white;
+    border-radius: 2em;
+    border: none;
+}

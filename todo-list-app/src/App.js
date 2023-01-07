@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProjectsDetail from './components/ProjectsDetail/ProjectsDetail';
 import TodoSections from './components/TodoSections/TodoSections';
+import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
 
 function App() {
   const [projects, setProjects] = useState([
@@ -101,6 +102,7 @@ function App() {
           </main>
         </div>
       </BrowserRouter>
+      <AddProjectForm />
     </div>
   );
 }
