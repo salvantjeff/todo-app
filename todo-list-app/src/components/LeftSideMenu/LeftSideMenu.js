@@ -76,7 +76,8 @@ function LeftSideMenu({
                         </div>
                         {projects.map(project => {
                             return (
-                                <div key={project.id} className="side-menu__projects-contents">
+                                <Link to={`/projects/${project.id}`} key={project.id} className="links">
+                                <div className="side-menu__projects-contents">
                                     <div onMouseOut={handleMouseOut} onMouseOver={handleOnHover} className="side-menu__section-item">
                                         <div className="section-item-details">
                                             <div>{project.icon}</div>
@@ -86,6 +87,7 @@ function LeftSideMenu({
                                         <div onClick={handleRemoveProject} data-id={project.id} className="section-item__remove">-</div>
                                     </div>
                                 </div>
+                                </Link>
                             );
                         })}
                     </div>

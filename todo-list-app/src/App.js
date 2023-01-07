@@ -138,7 +138,7 @@ function App() {
                 {/* <Header /> */}
                 <Routes>
                   <Route path='/app/today' element={<Home todoSections={todoSections} setTodoSections={setTodoSections}/>}/>
-                  <Route path='/projects/:id' element={<ProjectsDetail />}/>
+                  <Route path='/projects/:id' element={<ProjectsDetail projects={projects} setProjects={setProjects} />}/>
                   <Route 
                     path='/sections/:id' 
                     element={<TodoSections 
