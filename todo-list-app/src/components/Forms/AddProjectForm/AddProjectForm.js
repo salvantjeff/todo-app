@@ -1,6 +1,6 @@
 import './AddProjectForm.css';
 
-function AddProjectForm({ closeProjectForm }) {
+function AddProjectForm({ closeProjectForm, newProject, handleOnChange }) {
     return (
         <div onClick={closeProjectForm} className='project-form-overlay'>
             <div className='project-form-wrapper'>
@@ -12,6 +12,8 @@ function AddProjectForm({ closeProjectForm }) {
                         id="new_project_name" 
                         name="new_project_name" 
                         type="text" 
+                        value={newProject.name}
+                        onChange={handleOnChange}
                     />
                 </div>
                 <div className="popup_buttons">

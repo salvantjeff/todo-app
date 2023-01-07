@@ -90,6 +90,21 @@ function App() {
     };
   };
 
+  const [newProject, setNewProject] = useState({
+    name: '',
+    id: uuidv4(),
+    data: [],
+    icon: 'o',
+  });
+
+  function handleOnChange(e) {
+    const newUserProject = {
+      ...newProject,
+      name: e.target.value,
+    };
+    setNewProject(newUserProject);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -122,7 +137,11 @@ function App() {
           </main>
         </div>
       </BrowserRouter>
-      <AddProjectForm closeProjectForm={closeProjectForm}/>
+      <AddProjectForm 
+        closeProjectForm={closeProjectForm}
+        handleOnChange={handleOnChange}
+        newProject={newProject}
+      />
     </div>
   );
 }
