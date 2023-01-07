@@ -1,13 +1,13 @@
+import './TodoSections.css';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import TodoCard from '../TodoCard/TodoCard';
-import './Home.css';
-import TodosList from '../../data/TodosList.json';
-import { useEffect, useState } from 'react';
 import AddTaskForm from '../Forms/AddTaskForm/AddTaskForm';
 import { v4 as uuidv4 } from 'uuid';
 import Header from '../Header/Header';
 
-function Home({ todoSections, setTodoSections }) {
-    const inboxID = todoSections[0].id;
+function TodoSections({ todoSections, setTodoSections }) {
+    const { id } = useParams();
     const [addTaskFormActive, setAddFormTaskActive] = useState(false);
     const [addTask, setAddTask] = useState({
         name: '',
@@ -20,7 +20,7 @@ function Home({ todoSections, setTodoSections }) {
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
         const newTodoSections = todoSections.map(section => {
-            if (section.id === inboxID) {
+            if (section.id === id) {
                 return {
                     ...section,
                     data: section.data.filter(todo => todo.id !== cardId)
@@ -47,14 +47,15 @@ function Home({ todoSections, setTodoSections }) {
         e.preventDefault();
         console.log('Adding new task...');
         const newTodoSections = todoSections.map(section => {
-            if (section.id === inboxID) {
+            if (section.id === id) {
                 return {
                     ...section,
-                    data: [...section.data, addTask],
-                };
+                    data: [...section.data, addTask]
+                }
             };
             return section;
-        });
+        })
+       
         setTodoSections(newTodoSections);
         setAddTask({
             name: '',
@@ -66,30 +67,21 @@ function Home({ todoSections, setTodoSections }) {
         setAddFormTaskActive(false);
     };
 
-    function getTodaysTodos() {
-        const currAllData = [...todoSections[0].data];
-        const today = (new Date()).toDateString();
-        let todayTodos = [];
-        for (let item of currAllData) {
-            let formatDate;
-            if (Array.isArray(item.date)) {
-                [formatDate] = [...item.date];
-            } else {
-                formatDate = item.date;
+    function getTitle() {
+        let title = '';
+        // const sectionsList = [...todoSections];
+        for (let section of todoSections) {
+            if (section.id === id) {
+                title = section.name;
             };
-            formatDate = formatDate.replace(/-/, '/').replace(/-/, '/');
-            const currItem = (new Date(formatDate)).toDateString();
-            if (today === currItem) {
-                todayTodos.push(item);
-            };
-        };
-        return todayTodos;
+        }
+        return title;
     };
-
-    const todaysTodos = getTodaysTodos();
+    const currentTitle = getTitle();
+    const [currTodos] = [...todoSections.filter(section => section.id === id)];
     return (
         <>
-        <Header currentTitle={'Today'}/>
+        <Header currentTitle={currentTitle} />
         <div className="board-view__content">
             <section className="section-board add-button">
                 <div onClick={handleAddTaskFormActive} className="add-task-button">
@@ -102,7 +94,7 @@ function Home({ todoSections, setTodoSections }) {
                     <p>Overdue <span>9</span></p>
                 </div>
                 <div className="section-board__cards">
-                    {todaysTodos.map((todo => {
+                    {currTodos.data.map(todo => {
                         return (
                             <TodoCard 
                                 key={todo.id} 
@@ -110,7 +102,7 @@ function Home({ todoSections, setTodoSections }) {
                                 handleTodoComplete={handleTodoComplete}
                             />
                         );
-                    }))}                    
+                    })}
                 </div>
                 <footer className="section-board__footer"></footer>
             </section>
@@ -125,4 +117,4 @@ function Home({ todoSections, setTodoSections }) {
     );
 };
 
-export default Home;
+export default TodoSections;
