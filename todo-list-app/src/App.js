@@ -121,6 +121,12 @@ function App() {
     setProjectFormStatus(false);
   };
 
+  function handleRemoveProject(e) {
+    const projectID = e.target.dataset.id;
+    const newUserProjects = projects.filter(project => project.id !== projectID);
+    setProjects(newUserProjects);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -147,6 +153,7 @@ function App() {
                   setProjects={setProjects}
                   todaysTodosCount={todaysTodosCount}
                   showProjectForm={showProjectForm}
+                  handleRemoveProject={handleRemoveProject}
                 />
               </div>
             </div>

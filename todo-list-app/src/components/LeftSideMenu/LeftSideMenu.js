@@ -7,7 +7,8 @@ function LeftSideMenu({
     projects,
     setProjects, 
     todaysTodosCount,
-    showProjectForm 
+    showProjectForm,
+    handleRemoveProject 
 }) {
     // const [projectFormStatus, setProjectFormStatus] = useState(false);
 
@@ -82,7 +83,7 @@ function LeftSideMenu({
                                             <p>{project.name}</p>
                                         </div>
                                         <div className="section-item__count">{project.data.length}</div>
-                                        <div className="section-item__remove">-</div>
+                                        <div onClick={handleRemoveProject} data-id={project.id} className="section-item__remove">-</div>
                                     </div>
                                 </div>
                             );
