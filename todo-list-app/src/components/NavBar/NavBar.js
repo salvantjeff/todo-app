@@ -2,6 +2,7 @@ import './NavBar.css';
 import { useEffect, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { GrHomeRounded, GrAdd } from 'react-icons/gr';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
     const [menuStatus, setMenuStatus] = useState(false);
@@ -22,7 +23,9 @@ function NavBar() {
         <nav className="nav-bar">
             <div className="left-buttons">
                 <div onClick={handleMenuClicked}><AiOutlineMenu/></div>
-                <div><GrHomeRounded/></div>
+                <Link to='/app/today' className='links'>
+                    <div><GrHomeRounded/></div>
+                </Link>
             </div>
             <div className="right-buttons">
                 <div><GrAdd /></div>
