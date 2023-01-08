@@ -146,7 +146,7 @@ const prioritiesList = [
         value: 4,
         icon: '',
         id: 'fourth-priority',
-        status: '',
+        status: 'selected',
     },
 ];
 
