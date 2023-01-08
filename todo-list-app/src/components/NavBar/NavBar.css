@@ -3,7 +3,7 @@
     top: 0;
     right: 0;
     width: 100%;
-    background-color: rgb(255, 129, 129);
+    background-color: rgb(167, 228, 159);
     display: flex;
     justify-content: space-between;
     padding: .5rem 1rem;
@@ -24,9 +24,12 @@
 }
 
 .profile-image-container {
-    background-color: #fff;
+    background-color: rgb(0, 213, 255);
     height: 35px;
     width: 35px;
     border-radius: 50%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -5,6 +5,7 @@ import AddTaskForm from '../Forms/AddTaskForm/AddTaskForm';
 import { useParams } from 'react-router-dom';
 import TodoCard from '../TodoCard/TodoCard';
 import { useState, useEffect } from 'react';
+import { GrAdd } from 'react-icons/gr';
 
 function ProjectsDetail({ projects, setProjects }) {
     const { id } = useParams();
@@ -79,7 +80,11 @@ function ProjectsDetail({ projects, setProjects }) {
     let currentTitle = getTitle();
     let [currTodos] = [...projects.filter(project => project.id === id)];
     let message = 'Use menu to navigate or create a new project';
-
+    if (currTodos && currTodos.data.length >= 4) {
+        document.body.classList.add('cardsOverflow');
+    } else {
+        document.body.classList.remove('cardsOverflow');
+    };
     return (
         <>
         <Header currentTitle={!currTodos ? 'Project deleted' : currentTitle} />
@@ -87,13 +92,13 @@ function ProjectsDetail({ projects, setProjects }) {
             <div className="board-view__content">
                <section className="section-board add-button">
                    <div onClick={handleAddTaskFormActive} className="add-task-button">
-                       <p>+</p>
+                       <p><GrAdd/></p>
                        <p>Add task</p>
                    </div>
                </section>
                <section className="section-board view">
                    <div className="section-board__view-header">
-                       <p>Overdue <span>9</span></p>
+                       <p>All todos <span className='all-todos-count'>{currTodos.data.length}</span></p>
                    </div>
                    <div className="section-board__cards">
                        {currTodos.data.map(todo => {

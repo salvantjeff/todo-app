@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './LeftSideMenu.css';
 import { Link } from 'react-router-dom';
+import { GrAdd } from 'react-icons/gr';
 
 function LeftSideMenu({ 
     todoSections, 
@@ -72,7 +73,7 @@ function LeftSideMenu({
                     <div className="side-menu__projects">
                         <div onClick={showProjectForm} className="side-menu__projects-title">
                             <p>Projects</p>
-                            <div>+</div>
+                            <div><GrAdd/></div>
                         </div>
                         {projects.map(project => {
                             return (

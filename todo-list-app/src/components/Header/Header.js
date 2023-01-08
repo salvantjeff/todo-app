@@ -7,7 +7,7 @@ function Header({ currentTitle }) {
                 <h2 className="section-heading">
                     {currentTitle}
                     <span className="current-date">
-                        Wed Jan 4
+                        {(new Date()).toDateString()}
                     </span>
                 </h2>
             </div>

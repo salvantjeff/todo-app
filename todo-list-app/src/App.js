@@ -11,6 +11,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProjectsDetail from './components/ProjectsDetail/ProjectsDetail';
 import TodoSections from './components/TodoSections/TodoSections';
 import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
+import { BsCalendarEvent } from 'react-icons/bs';
+import { GrInbox } from 'react-icons/gr';
+import { AiFillRightCircle } from 'react-icons/ai';
 
 function App() {
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
@@ -19,19 +22,19 @@ function App() {
       name: 'Personal',
       id: "0d67c5d0-ab6d-4e05-88cb-1981a1187f5a",
       data: TodosList,
-      icon: 'o',
+      icon: <AiFillRightCircle/>,
     },
     {
       name: 'Health',
       id: "c8a41405-f84d-43c4-bfc2-467e11ad27fd",
       data: TodosList,
-      icon: 'o',
+      icon: <AiFillRightCircle/>,
     },
     {
       name: 'School',
       id: "7e84a0aa-2326-4666-a9e2-6ed5d581baef",
       data: TodosList,
-      icon: 'o',
+      icon: <AiFillRightCircle/>,
     },
   ]);
 
@@ -40,13 +43,13 @@ function App() {
       name: 'Inbox',
       id: "26a8cd00-0e2b-4c6c-b047-3373843d261a",
       data: TodosList,
-      icon: '$',
+      icon: <GrInbox/>,
     },
     {
       name: 'Today',
       id: "3ba46678-72b7-4bbd-a781-28201b31935e",
       data: [],
-      icon: '%',
+      icon: <BsCalendarEvent/>,
     },
   ]);
 
@@ -95,7 +98,7 @@ function App() {
     name: '',
     id: uuidv4(),
     data: [],
-    icon: 'o',
+    icon: <AiFillRightCircle/>,
   });
 
   function handleOnChange(e) {
@@ -117,7 +120,7 @@ function App() {
       name: '',
       id: uuidv4(),
       data: [],
-      icon: 'o',
+      icon: <AiFillRightCircle/>,
     });
     setProjectFormStatus(false);
   };

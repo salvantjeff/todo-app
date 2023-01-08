@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import AddTaskForm from '../Forms/AddTaskForm/AddTaskForm';
 import { v4 as uuidv4 } from 'uuid';
 import Header from '../Header/Header';
+import { GrAdd } from 'react-icons/gr';
 
 function Home({ todoSections, setTodoSections }) {
     const inboxID = todoSections[0].id;
@@ -87,19 +88,26 @@ function Home({ todoSections, setTodoSections }) {
     };
 
     const todaysTodos = getTodaysTodos();
+
+    if (todaysTodos.length >= 4) {
+        document.body.classList.add('cardsOverflow');
+    } else {
+        document.body.classList.remove('cardsOverflow');
+    };
+
     return (
         <>
         <Header currentTitle={'Today'}/>
         <div className="board-view__content">
             <section className="section-board add-button">
                 <div onClick={handleAddTaskFormActive} className="add-task-button">
-                    <p>+</p>
+                    <p><GrAdd/></p>
                     <p>Add task</p>
                 </div>
             </section>
             <section className="section-board view">
                 <div className="section-board__view-header">
-                    <p>Overdue <span>9</span></p>
+                    <p>All todos <span className='all-todos-count'>{todaysTodos.length}</span></p>
                 </div>
                 <div className="section-board__cards">
                     {todaysTodos.map((todo => {
