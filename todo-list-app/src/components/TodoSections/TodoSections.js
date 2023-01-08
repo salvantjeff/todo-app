@@ -5,6 +5,7 @@ import TodoCard from '../TodoCard/TodoCard';
 import AddTaskForm from '../Forms/AddTaskForm/AddTaskForm';
 import { v4 as uuidv4 } from 'uuid';
 import Header from '../Header/Header';
+import { GrAdd } from 'react-icons/gr';
 
 function TodoSections({ todoSections, setTodoSections }) {
     const { id } = useParams();
@@ -85,7 +86,7 @@ function TodoSections({ todoSections, setTodoSections }) {
         <div className="board-view__content">
             <section className="section-board add-button">
                 <div onClick={handleAddTaskFormActive} className="add-task-button">
-                    <p>+</p>
+                    <p><GrAdd/></p>
                     <p>Add task</p>
                 </div>
             </section>

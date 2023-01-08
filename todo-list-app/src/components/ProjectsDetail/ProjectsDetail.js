@@ -5,6 +5,7 @@ import AddTaskForm from '../Forms/AddTaskForm/AddTaskForm';
 import { useParams } from 'react-router-dom';
 import TodoCard from '../TodoCard/TodoCard';
 import { useState, useEffect } from 'react';
+import { GrAdd } from 'react-icons/gr';
 
 function ProjectsDetail({ projects, setProjects }) {
     const { id } = useParams();
@@ -87,7 +88,7 @@ function ProjectsDetail({ projects, setProjects }) {
             <div className="board-view__content">
                <section className="section-board add-button">
                    <div onClick={handleAddTaskFormActive} className="add-task-button">
-                       <p>+</p>
+                       <p><GrAdd/></p>
                        <p>Add task</p>
                    </div>
                </section>
