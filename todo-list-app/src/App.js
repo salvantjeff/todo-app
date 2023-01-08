@@ -17,28 +17,28 @@ import { AiFillRightCircle } from 'react-icons/ai';
 
 const prioritiesList = [
   {
-      value: 1,
-      icon: '',
-      id: 'first-priority',
-      status: '',
+    value: 1,
+    icon: '',
+    id: 'first-priority',
+    status: '',
   },
   {
-      value: 2,
-      icon: '',
-      id: 'second-priority',
-      status: '',
+    value: 2,
+    icon: '',
+    id: 'second-priority',
+    status: '',
   },
   {
-      value: 3,
-      icon: '',
-      id: 'third-priority',
-      status: '',
+    value: 3,
+    icon: '',
+    id: 'third-priority',
+    status: '',
   },
   {
-      value: 4,
-      icon: '',
-      id: 'fourth-priority',
-      status: 'selected',
+    value: 4,
+    icon: '',
+    id: 'fourth-priority',
+    status: 'selected',
   },
 ];
 
