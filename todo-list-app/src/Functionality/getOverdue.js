@@ -1,5 +1,5 @@
 function getOverdue(currAllData) {
-    const today = (new Date()).valueOf();
+    const today = (new Date()).setHours(0, 0, 0, 0);
     let overdueTodos = [];
     for (let item of currAllData) {
         let formatDate;
@@ -9,7 +9,7 @@ function getOverdue(currAllData) {
             formatDate = item.date;
         };
         formatDate = formatDate.replace(/-/, '/').replace(/-/, '/');
-        const currItem = (new Date(formatDate)).valueOf();
+        const currItem = (new Date(formatDate)).setHours(0, 0, 0, 0);
         if (currItem < today) {
             overdueTodos.push(item);
         };
