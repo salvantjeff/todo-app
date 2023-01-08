@@ -6,6 +6,7 @@ import AddTaskForm from '../Forms/AddTaskForm/AddTaskForm';
 import { v4 as uuidv4 } from 'uuid';
 import Header from '../Header/Header';
 import { GrAdd } from 'react-icons/gr';
+import getOverdue from '../../Functionality/getOverdue';
 
 function TodoSections({ todoSections, setTodoSections }) {
     const { id } = useParams();
@@ -97,7 +98,14 @@ function TodoSections({ todoSections, setTodoSections }) {
             </section>
             <section className="section-board view">
                 <div className="section-board__view-header">
-                    <p>Overdue <span>9</span></p>
+                    <div className='header-details'>
+                        <div className='left-header-details'>
+                            <p>Overdue <span className='all-todos-count'>{getOverdue(currTodos.data).length}</span></p>
+                        </div>
+                        <div className='right-header-details'>
+                            <p>All todos <span className='all-todos-count'>{currTodos.data.length}</span></p>
+                        </div>
+                    </div>
                 </div>
                 <div className="section-board__cards">
                     {currTodos.data.map(todo => {
