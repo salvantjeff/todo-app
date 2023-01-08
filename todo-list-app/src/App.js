@@ -14,6 +14,7 @@ import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
 import { BsCalendarEvent } from 'react-icons/bs';
 import { GrInbox } from 'react-icons/gr';
 import { AiFillRightCircle } from 'react-icons/ai';
+import EditTaskForm from './components/Forms/EditTaskForm/EditTaskForm';
 
 const prioritiesList = [
   {
@@ -304,6 +305,7 @@ function App() {
         newProject={newProject}
         onSubmit={handleSubmitNewProject}
       />
+      <EditTaskForm/>
     </div>
   );
 }
