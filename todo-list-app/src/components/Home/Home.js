@@ -88,6 +88,13 @@ function Home({ todoSections, setTodoSections }) {
     };
 
     const todaysTodos = getTodaysTodos();
+
+    if (todaysTodos.length >= 4) {
+        document.body.classList.add('cardsOverflow');
+    } else {
+        document.body.classList.remove('cardsOverflow');
+    };
+
     return (
         <>
         <Header currentTitle={'Today'}/>

@@ -29,7 +29,7 @@
 .section-board__view-header {
     background-color: #fff;
     padding: 1rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.12); */
 }
 
 .section-board.view {
@@ -58,9 +58,12 @@
 
 .section-board__footer {
     min-height: 44px;
-    border-top: 1px solid rgba(0, 0, 0, .12);
     background-color: #fff;
     display: flex;
     flex: 0 0 auto;
     z-index: 1;
+}
+
+.cardsOverflow .section-board__footer {
+    border-top: 1px solid rgba(0, 0, 0, .12);
 }
