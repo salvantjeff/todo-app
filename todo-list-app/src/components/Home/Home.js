@@ -107,7 +107,7 @@ function Home({ todoSections, setTodoSections }) {
             </section>
             <section className="section-board view">
                 <div className="section-board__view-header">
-                    <p>Overdue <span>9</span></p>
+                    <p>All todos <span className='all-todos-count'>{todaysTodos.length}</span></p>
                 </div>
                 <div className="section-board__cards">
                     {todaysTodos.map((todo => {

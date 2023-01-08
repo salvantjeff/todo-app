@@ -80,7 +80,7 @@ function ProjectsDetail({ projects, setProjects }) {
     let currentTitle = getTitle();
     let [currTodos] = [...projects.filter(project => project.id === id)];
     let message = 'Use menu to navigate or create a new project';
-    if (currTodos.data.length >= 4) {
+    if (currTodos && currTodos.data.length >= 4) {
         document.body.classList.add('cardsOverflow');
     } else {
         document.body.classList.remove('cardsOverflow');
@@ -98,7 +98,7 @@ function ProjectsDetail({ projects, setProjects }) {
                </section>
                <section className="section-board view">
                    <div className="section-board__view-header">
-                       <p>Overdue <span>9</span></p>
+                       <p>All todos <span className='all-todos-count'>{currTodos.data.length}</span></p>
                    </div>
                    <div className="section-board__cards">
                        {currTodos.data.map(todo => {
