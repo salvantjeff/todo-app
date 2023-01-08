@@ -1,6 +1,7 @@
 import './NavBar.css';
 import { useEffect, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { GrHomeRounded, GrAdd } from 'react-icons/gr';
 
 function NavBar() {
     const [menuStatus, setMenuStatus] = useState(false);
@@ -21,10 +22,10 @@ function NavBar() {
         <nav className="nav-bar">
             <div className="left-buttons">
                 <div onClick={handleMenuClicked}><AiOutlineMenu/></div>
-                <div>home</div>
+                <div><GrHomeRounded/></div>
             </div>
             <div className="right-buttons">
-                <div>Add</div>
+                <div><GrAdd /></div>
                 <div className="profile-image-container">
                     profile
                 </div>
