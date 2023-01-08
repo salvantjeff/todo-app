@@ -15,6 +15,33 @@ import { BsCalendarEvent } from 'react-icons/bs';
 import { GrInbox } from 'react-icons/gr';
 import { AiFillRightCircle } from 'react-icons/ai';
 
+const prioritiesList = [
+  {
+      value: 1,
+      icon: '',
+      id: 'first-priority',
+      status: '',
+  },
+  {
+      value: 2,
+      icon: '',
+      id: 'second-priority',
+      status: '',
+  },
+  {
+      value: 3,
+      icon: '',
+      id: 'third-priority',
+      status: '',
+  },
+  {
+      value: 4,
+      icon: '',
+      id: 'fourth-priority',
+      status: 'selected',
+  },
+];
+
 function App() {
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
   const [projects, setProjects] = useState([
@@ -171,7 +198,7 @@ function App() {
   };
   const allTodosHashMap = createAllTodosHashMap();
   console.log('ALL TODOS HASH MAP: ',allTodosHashMap);
-
+  const [priorities, setPriorities] = useState(prioritiesList);
   const [addTaskFormActive, setAddFormTaskActive] = useState(false);
   const [addTask, setAddTask] = useState({
     name: '',
@@ -203,6 +230,7 @@ function App() {
     });
     setAddFormTaskActive(false);
     //Reset priorities selector
+    setPriorities(prioritiesList);
   };
 
   return (
@@ -225,6 +253,8 @@ function App() {
                       addTaskFormActive={addTaskFormActive}
                       setAddFormTaskActive={setAddFormTaskActive}
                       handleAddNewTask={handleAddNewTask}
+                      priorities={priorities}
+                      setPriorities={setPriorities}
                     />}
                   />
                   <Route 
@@ -236,6 +266,9 @@ function App() {
                       setAddTask={setAddTask}
                       addTaskFormActive={addTaskFormActive}
                       setAddFormTaskActive={setAddFormTaskActive}
+                      priorities={priorities}
+                      setPriorities={setPriorities}
+                      prioritiesList={prioritiesList}
                     />}
                   />
                   <Route 
@@ -248,6 +281,8 @@ function App() {
                       addTaskFormActive={addTaskFormActive}
                       setAddFormTaskActive={setAddFormTaskActive}
                       handleAddNewTask={handleAddNewTask}
+                      priorities={priorities}
+                      setPriorities={setPriorities}
                     />}
                   />
                 </Routes>

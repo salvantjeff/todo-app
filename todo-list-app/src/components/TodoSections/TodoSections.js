@@ -15,7 +15,9 @@ function TodoSections({
     addTask, 
     setAddTask, 
     setAddFormTaskActive, 
-    addTaskFormActive 
+    addTaskFormActive,
+    priorities,
+    setPriorities
 }) {
     const { id } = useParams();
     // const [addTaskFormActive, setAddFormTaskActive] = useState(false);
@@ -134,6 +136,8 @@ function TodoSections({
                 addTask={addTask}
                 setAddTask={setAddTask}
                 setAddFormTaskActive={setAddFormTaskActive}
+                priorities={priorities}
+                setPriorities={setPriorities}
             />
         </div>
         </>

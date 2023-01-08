@@ -13,7 +13,10 @@ function ProjectsDetail({
     addTask, 
     setAddTask, 
     setAddFormTaskActive, 
-    addTaskFormActive 
+    addTaskFormActive,
+    priorities,
+    setPriorities,
+    prioritiesList
 }) {
     const { id } = useParams();
     // const [addTaskFormActive, setAddFormTaskActive] = useState(false);
@@ -74,6 +77,7 @@ function ProjectsDetail({
         });
         setAddFormTaskActive(false);
         //Reset priorities selector
+        setPriorities(prioritiesList);
     };
 
     function getTitle() {
@@ -126,6 +130,8 @@ function ProjectsDetail({
                    addTask={addTask}
                    setAddTask={setAddTask}
                    setAddFormTaskActive={setAddFormTaskActive}
+                   priorities={priorities}
+                   setPriorities={setPriorities}
                />
             </div>
         }

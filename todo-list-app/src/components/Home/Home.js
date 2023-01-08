@@ -14,7 +14,9 @@ function Home({
     addTask, 
     setAddTask, 
     setAddFormTaskActive, 
-    addTaskFormActive 
+    addTaskFormActive,
+    priorities,
+    setPriorities
 }) {
     const inboxID = todoSections[0].id;
     // const [addTaskFormActive, setAddFormTaskActive] = useState(false);
@@ -136,6 +138,8 @@ function Home({
                 addTask={addTask}
                 setAddTask={setAddTask}
                 setAddFormTaskActive={setAddFormTaskActive}
+                priorities={priorities}
+                setPriorities={setPriorities}
             />
         </div>
         </>
