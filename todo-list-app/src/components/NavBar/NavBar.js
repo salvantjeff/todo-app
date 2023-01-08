@@ -27,7 +27,7 @@ function NavBar() {
             <div className="right-buttons">
                 <div><GrAdd /></div>
                 <div className="profile-image-container">
-                    profile
+                    J
                 </div>
             </div>
         </nav>
