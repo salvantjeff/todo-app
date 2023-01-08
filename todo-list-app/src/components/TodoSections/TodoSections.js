@@ -80,6 +80,11 @@ function TodoSections({ todoSections, setTodoSections }) {
     };
     const currentTitle = getTitle();
     const [currTodos] = [...todoSections.filter(section => section.id === id)];
+    if (currTodos.data.length >= 4) {
+        document.body.classList.add('cardsOverflow');
+    } else {
+        document.body.classList.remove('cardsOverflow');
+    };
     return (
         <>
         <Header currentTitle={currentTitle} />
