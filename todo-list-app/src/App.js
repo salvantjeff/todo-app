@@ -15,6 +15,33 @@ import { BsCalendarEvent } from 'react-icons/bs';
 import { GrInbox } from 'react-icons/gr';
 import { AiFillRightCircle } from 'react-icons/ai';
 
+const prioritiesList = [
+  {
+    value: 1,
+    icon: '',
+    id: 'first-priority',
+    status: '',
+  },
+  {
+    value: 2,
+    icon: '',
+    id: 'second-priority',
+    status: '',
+  },
+  {
+    value: 3,
+    icon: '',
+    id: 'third-priority',
+    status: '',
+  },
+  {
+    value: 4,
+    icon: '',
+    id: 'fourth-priority',
+    status: 'selected',
+  },
+];
+
 function App() {
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
   const [projects, setProjects] = useState([
@@ -171,6 +198,39 @@ function App() {
   };
   const allTodosHashMap = createAllTodosHashMap();
   console.log('ALL TODOS HASH MAP: ',allTodosHashMap);
+  const [priorities, setPriorities] = useState(prioritiesList);
+  const [addTaskFormActive, setAddFormTaskActive] = useState(false);
+  const [addTask, setAddTask] = useState({
+    name: '',
+    description: '',
+    date: '',
+    id: uuidv4(),
+    priority: 4,
+  });
+
+  function handleAddNewTask(e) {
+    e.preventDefault();
+    console.log('Adding new task...');
+    const newTodoSections = todoSections.map(section => {
+        if (section.id === inboxID) {
+            return {
+                ...section,
+                data: [...section.data, addTask],
+            };
+        };
+        return section;
+    });
+    setTodoSections(newTodoSections);
+    setAddTask({
+        name: '',
+        description: '',
+        date: '',
+        id: uuidv4(),
+        priority: 4,
+    });
+    setAddFormTaskActive(false);
+    setPriorities(prioritiesList);
+  };
 
   return (
     <div className="App">
@@ -182,13 +242,46 @@ function App() {
               <div className="agenda-view">
                 {/* <Header /> */}
                 <Routes>
-                  <Route path='/app/today' element={<Home todoSections={todoSections} setTodoSections={setTodoSections}/>}/>
-                  <Route path='/projects/:id' element={<ProjectsDetail projects={projects} setProjects={setProjects} />}/>
+                  <Route 
+                    path='/app/today' 
+                    element={<Home 
+                      todoSections={todoSections} 
+                      setTodoSections={setTodoSections}
+                      addTask={addTask}
+                      setAddTask={setAddTask}
+                      addTaskFormActive={addTaskFormActive}
+                      setAddFormTaskActive={setAddFormTaskActive}
+                      handleAddNewTask={handleAddNewTask}
+                      priorities={priorities}
+                      setPriorities={setPriorities}
+                    />}
+                  />
+                  <Route 
+                    path='/projects/:id' 
+                    element={<ProjectsDetail 
+                      projects={projects} 
+                      setProjects={setProjects} 
+                      addTask={addTask}
+                      setAddTask={setAddTask}
+                      addTaskFormActive={addTaskFormActive}
+                      setAddFormTaskActive={setAddFormTaskActive}
+                      priorities={priorities}
+                      setPriorities={setPriorities}
+                      prioritiesList={prioritiesList}
+                    />}
+                  />
                   <Route 
                     path='/sections/:id' 
                     element={<TodoSections 
                       todoSections={todoSections} 
                       setTodoSections={setTodoSections}
+                      addTask={addTask}
+                      setAddTask={setAddTask}
+                      addTaskFormActive={addTaskFormActive}
+                      setAddFormTaskActive={setAddFormTaskActive}
+                      handleAddNewTask={handleAddNewTask}
+                      priorities={priorities}
+                      setPriorities={setPriorities}
                     />}
                   />
                 </Routes>

@@ -8,16 +8,18 @@ import Header from '../Header/Header';
 import { GrAdd } from 'react-icons/gr';
 import getOverdue from '../../Functionality/getOverdue';
 
-function TodoSections({ todoSections, setTodoSections }) {
+function TodoSections({ 
+    todoSections, 
+    setTodoSections, 
+    handleAddNewTask, 
+    addTask, 
+    setAddTask, 
+    setAddFormTaskActive, 
+    addTaskFormActive,
+    priorities,
+    setPriorities
+}) {
     const { id } = useParams();
-    const [addTaskFormActive, setAddFormTaskActive] = useState(false);
-    const [addTask, setAddTask] = useState({
-        name: '',
-        description: '',
-        date: '',
-        id: uuidv4(),
-        priority: 4,
-    });
 
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
@@ -45,33 +47,8 @@ function TodoSections({ todoSections, setTodoSections }) {
         };
     }, [addTaskFormActive]);
 
-    function handleAddNewTask(e) {
-        e.preventDefault();
-        console.log('Adding new task...');
-        const newTodoSections = todoSections.map(section => {
-            if (section.id === id) {
-                return {
-                    ...section,
-                    data: [...section.data, addTask]
-                }
-            };
-            return section;
-        })
-       
-        setTodoSections(newTodoSections);
-        setAddTask({
-            name: '',
-            description: '',
-            date: '',
-            id: uuidv4(),
-            priority: 4,
-        });
-        setAddFormTaskActive(false);
-    };
-
     function getTitle() {
         let title = '';
-        // const sectionsList = [...todoSections];
         for (let section of todoSections) {
             if (section.id === id) {
                 title = section.name;
@@ -125,6 +102,8 @@ function TodoSections({ todoSections, setTodoSections }) {
                 addTask={addTask}
                 setAddTask={setAddTask}
                 setAddFormTaskActive={setAddFormTaskActive}
+                priorities={priorities}
+                setPriorities={setPriorities}
             />
         </div>
         </>

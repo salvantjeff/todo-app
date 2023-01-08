@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import './AddTaskForm.css';
 
-function AddTaskForm({ onSubmit, addTask, setAddTask, setAddFormTaskActive }) {
+function AddTaskForm({ 
+    onSubmit, 
+    addTask, 
+    setAddTask, 
+    setAddFormTaskActive, 
+    priorities, 
+    setPriorities 
+}) {
     const [priorityStatus, setPriorityStatus] = useState(false);
 
     useEffect(() => {
@@ -15,8 +22,6 @@ function AddTaskForm({ onSubmit, addTask, setAddTask, setAddFormTaskActive }) {
     function handlePriorityClicked() {
         setPriorityStatus(!priorityStatus);
     };
-
-    const [priorities, setPriorities] = useState(prioritiesList);
 
     function handleChange(e) {
         const newAddTask = {
@@ -122,33 +127,6 @@ function AddTaskForm({ onSubmit, addTask, setAddTask, setAddFormTaskActive }) {
         </form>
     );
 };
-
-const prioritiesList = [
-    {
-        value: 1,
-        icon: '',
-        id: 'first-priority',
-        status: '',
-    },
-    {
-        value: 2,
-        icon: '',
-        id: 'second-priority',
-        status: '',
-    },
-    {
-        value: 3,
-        icon: '',
-        id: 'third-priority',
-        status: '',
-    },
-    {
-        value: 4,
-        icon: '',
-        id: 'fourth-priority',
-        status: '',
-    },
-];
 
 function PriorityOptions({ priorities, handleOptionSelected }) {
     return (

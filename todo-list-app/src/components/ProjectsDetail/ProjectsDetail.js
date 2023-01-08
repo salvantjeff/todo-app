@@ -7,16 +7,18 @@ import TodoCard from '../TodoCard/TodoCard';
 import { useState, useEffect } from 'react';
 import { GrAdd } from 'react-icons/gr';
 
-function ProjectsDetail({ projects, setProjects }) {
+function ProjectsDetail({ 
+    projects, 
+    setProjects, 
+    addTask, 
+    setAddTask, 
+    setAddFormTaskActive, 
+    addTaskFormActive,
+    priorities,
+    setPriorities,
+    prioritiesList
+}) {
     const { id } = useParams();
-    const [addTaskFormActive, setAddFormTaskActive] = useState(false);
-    const [addTask, setAddTask] = useState({
-        name: '',
-        description: '',
-        date: '',
-        id: uuidv4(),
-        priority: 4,
-    });
 
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
@@ -66,6 +68,7 @@ function ProjectsDetail({ projects, setProjects }) {
             priority: 4,
         });
         setAddFormTaskActive(false);
+        setPriorities(prioritiesList);
     };
 
     function getTitle() {
@@ -118,6 +121,8 @@ function ProjectsDetail({ projects, setProjects }) {
                    addTask={addTask}
                    setAddTask={setAddTask}
                    setAddFormTaskActive={setAddFormTaskActive}
+                   priorities={priorities}
+                   setPriorities={setPriorities}
                />
             </div>
         }
