@@ -7,16 +7,24 @@ import { v4 as uuidv4 } from 'uuid';
 import Header from '../Header/Header';
 import { GrAdd } from 'react-icons/gr';
 
-function Home({ todoSections, setTodoSections }) {
+function Home({ 
+    todoSections, 
+    setTodoSections, 
+    handleAddNewTask, 
+    addTask, 
+    setAddTask, 
+    setAddFormTaskActive, 
+    addTaskFormActive 
+}) {
     const inboxID = todoSections[0].id;
-    const [addTaskFormActive, setAddFormTaskActive] = useState(false);
-    const [addTask, setAddTask] = useState({
-        name: '',
-        description: '',
-        date: '',
-        id: uuidv4(),
-        priority: 4,
-    });
+    // const [addTaskFormActive, setAddFormTaskActive] = useState(false);
+    // const [addTask, setAddTask] = useState({
+    //     name: '',
+    //     description: '',
+    //     date: '',
+    //     id: uuidv4(),
+    //     priority: 4,
+    // });
 
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
@@ -44,28 +52,29 @@ function Home({ todoSections, setTodoSections }) {
         };
     }, [addTaskFormActive]);
 
-    function handleAddNewTask(e) {
-        e.preventDefault();
-        console.log('Adding new task...');
-        const newTodoSections = todoSections.map(section => {
-            if (section.id === inboxID) {
-                return {
-                    ...section,
-                    data: [...section.data, addTask],
-                };
-            };
-            return section;
-        });
-        setTodoSections(newTodoSections);
-        setAddTask({
-            name: '',
-            description: '',
-            date: '',
-            id: uuidv4(),
-            priority: 4,
-        });
-        setAddFormTaskActive(false);
-    };
+    // function handleAddNewTask(e) {
+    //     e.preventDefault();
+    //     console.log('Adding new task...');
+    //     const newTodoSections = todoSections.map(section => {
+    //         if (section.id === inboxID) {
+    //             return {
+    //                 ...section,
+    //                 data: [...section.data, addTask],
+    //             };
+    //         };
+    //         return section;
+    //     });
+    //     setTodoSections(newTodoSections);
+    //     setAddTask({
+    //         name: '',
+    //         description: '',
+    //         date: '',
+    //         id: uuidv4(),
+    //         priority: 4,
+    //     });
+    //     setAddFormTaskActive(false);
+    //     //Reset priorities selector
+    // };
 
     function getTodaysTodos() {
         const currAllData = [...todoSections[0].data];

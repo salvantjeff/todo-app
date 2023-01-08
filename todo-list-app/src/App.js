@@ -172,6 +172,39 @@ function App() {
   const allTodosHashMap = createAllTodosHashMap();
   console.log('ALL TODOS HASH MAP: ',allTodosHashMap);
 
+  const [addTaskFormActive, setAddFormTaskActive] = useState(false);
+  const [addTask, setAddTask] = useState({
+    name: '',
+    description: '',
+    date: '',
+    id: uuidv4(),
+    priority: 4,
+  });
+
+  function handleAddNewTask(e) {
+    e.preventDefault();
+    console.log('Adding new task...');
+    const newTodoSections = todoSections.map(section => {
+        if (section.id === inboxID) {
+            return {
+                ...section,
+                data: [...section.data, addTask],
+            };
+        };
+        return section;
+    });
+    setTodoSections(newTodoSections);
+    setAddTask({
+        name: '',
+        description: '',
+        date: '',
+        id: uuidv4(),
+        priority: 4,
+    });
+    setAddFormTaskActive(false);
+    //Reset priorities selector
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -182,13 +215,39 @@ function App() {
               <div className="agenda-view">
                 {/* <Header /> */}
                 <Routes>
-                  <Route path='/app/today' element={<Home todoSections={todoSections} setTodoSections={setTodoSections}/>}/>
-                  <Route path='/projects/:id' element={<ProjectsDetail projects={projects} setProjects={setProjects} />}/>
+                  <Route 
+                    path='/app/today' 
+                    element={<Home 
+                      todoSections={todoSections} 
+                      setTodoSections={setTodoSections}
+                      addTask={addTask}
+                      setAddTask={setAddTask}
+                      addTaskFormActive={addTaskFormActive}
+                      setAddFormTaskActive={setAddFormTaskActive}
+                      handleAddNewTask={handleAddNewTask}
+                    />}
+                  />
+                  <Route 
+                    path='/projects/:id' 
+                    element={<ProjectsDetail 
+                      projects={projects} 
+                      setProjects={setProjects} 
+                      addTask={addTask}
+                      setAddTask={setAddTask}
+                      addTaskFormActive={addTaskFormActive}
+                      setAddFormTaskActive={setAddFormTaskActive}
+                    />}
+                  />
                   <Route 
                     path='/sections/:id' 
                     element={<TodoSections 
                       todoSections={todoSections} 
                       setTodoSections={setTodoSections}
+                      addTask={addTask}
+                      setAddTask={setAddTask}
+                      addTaskFormActive={addTaskFormActive}
+                      setAddFormTaskActive={setAddFormTaskActive}
+                      handleAddNewTask={handleAddNewTask}
                     />}
                   />
                 </Routes>
