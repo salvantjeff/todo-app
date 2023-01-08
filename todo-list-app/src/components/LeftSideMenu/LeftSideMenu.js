@@ -11,21 +11,7 @@ function LeftSideMenu({
     showProjectForm,
     handleRemoveProject 
 }) {
-    // const [projectFormStatus, setProjectFormStatus] = useState(false);
-
-    // if (projectFormStatus) {
-    //     document.body.classList.add('activeProjectForm');
-    // } else {
-    //     document.body.classList.remove('activeProjectForm');
-    // };
-
-    // function showProjectForm() {
-    //     setProjectFormStatus(true);
-    // };
-
-    // function closeProjectForm() {
-    //     setProjectFormStatus(false);
-    // };
+    
     function handleOnHover(e) {
         e.target.classList.add('activeHover');
     };

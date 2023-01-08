@@ -20,14 +20,6 @@ function TodoSections({
     setPriorities
 }) {
     const { id } = useParams();
-    // const [addTaskFormActive, setAddFormTaskActive] = useState(false);
-    // const [addTask, setAddTask] = useState({
-    //     name: '',
-    //     description: '',
-    //     date: '',
-    //     id: uuidv4(),
-    //     priority: 4,
-    // });
 
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
@@ -55,34 +47,8 @@ function TodoSections({
         };
     }, [addTaskFormActive]);
 
-    // function handleAddNewTask(e) {
-    //     e.preventDefault();
-    //     console.log('Adding new task...');
-    //     const newTodoSections = todoSections.map(section => {
-    //         if (section.id === id) {
-    //             return {
-    //                 ...section,
-    //                 data: [...section.data, addTask]
-    //             }
-    //         };
-    //         return section;
-    //     })
-       
-    //     setTodoSections(newTodoSections);
-    //     setAddTask({
-    //         name: '',
-    //         description: '',
-    //         date: '',
-    //         id: uuidv4(),
-    //         priority: 4,
-    //     });
-    //     setAddFormTaskActive(false);
-    //     //Reset priorities selector
-    // };
-
     function getTitle() {
         let title = '';
-        // const sectionsList = [...todoSections];
         for (let section of todoSections) {
             if (section.id === id) {
                 title = section.name;

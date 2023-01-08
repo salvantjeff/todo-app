@@ -229,7 +229,6 @@ function App() {
         priority: 4,
     });
     setAddFormTaskActive(false);
-    //Reset priorities selector
     setPriorities(prioritiesList);
   };
 

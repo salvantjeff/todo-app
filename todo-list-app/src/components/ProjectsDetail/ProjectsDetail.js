@@ -19,14 +19,6 @@ function ProjectsDetail({
     prioritiesList
 }) {
     const { id } = useParams();
-    // const [addTaskFormActive, setAddFormTaskActive] = useState(false);
-    // const [addTask, setAddTask] = useState({
-    //     name: '',
-    //     description: '',
-    //     date: '',
-    //     id: uuidv4(),
-    //     priority: 4,
-    // });
 
     function handleTodoComplete(e) {
         const cardId = e.target.dataset.id;
@@ -76,7 +68,6 @@ function ProjectsDetail({
             priority: 4,
         });
         setAddFormTaskActive(false);
-        //Reset priorities selector
         setPriorities(prioritiesList);
     };
 

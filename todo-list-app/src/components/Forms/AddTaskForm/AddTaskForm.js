@@ -23,8 +23,6 @@ function AddTaskForm({
         setPriorityStatus(!priorityStatus);
     };
 
-    // const [priorities, setPriorities] = useState(prioritiesList);
-
     function handleChange(e) {
         const newAddTask = {
             ...addTask,
@@ -129,33 +127,6 @@ function AddTaskForm({
         </form>
     );
 };
-
-// const prioritiesList = [
-//     {
-//         value: 1,
-//         icon: '',
-//         id: 'first-priority',
-//         status: '',
-//     },
-//     {
-//         value: 2,
-//         icon: '',
-//         id: 'second-priority',
-//         status: '',
-//     },
-//     {
-//         value: 3,
-//         icon: '',
-//         id: 'third-priority',
-//         status: '',
-//     },
-//     {
-//         value: 4,
-//         icon: '',
-//         id: 'fourth-priority',
-//         status: 'selected',
-//     },
-// ];
 
 function PriorityOptions({ priorities, handleOptionSelected }) {
     return (
