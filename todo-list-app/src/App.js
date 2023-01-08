@@ -11,6 +11,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProjectsDetail from './components/ProjectsDetail/ProjectsDetail';
 import TodoSections from './components/TodoSections/TodoSections';
 import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
+import { BsCalendarEvent } from 'react-icons/bs';
+import { GrInbox } from 'react-icons/gr';
 
 function App() {
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
@@ -40,13 +42,13 @@ function App() {
       name: 'Inbox',
       id: "26a8cd00-0e2b-4c6c-b047-3373843d261a",
       data: TodosList,
-      icon: '$',
+      icon: <GrInbox/>,
     },
     {
       name: 'Today',
       id: "3ba46678-72b7-4bbd-a781-28201b31935e",
       data: [],
-      icon: '%',
+      icon: <BsCalendarEvent/>,
     },
   ]);
 
