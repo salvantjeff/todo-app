@@ -12,7 +12,7 @@ function TodoCard({
         <div className="section-board__todo-card">
             <div 
                 onClick={handleTodoComplete} 
-                className="priority-checkbox" 
+                className={`priority-checkbox p${todo.priority}`}
                 data-id={todo.id}
             ></div>
             <div className="todo_details">

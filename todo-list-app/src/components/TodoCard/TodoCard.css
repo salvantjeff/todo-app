@@ -81,3 +81,25 @@
     right: 0;
     left: 0;
 }
+
+.priority-checkbox.p4 {
+    border: 1px solid #000;
+    background-color: white;
+}
+
+.priority-checkbox.p3 {
+    /* border: 1px solid #2e8538;
+    background-color: #9ad479; */
+    border: 1px solid #0095ff;
+    background-color: #00d0ff;
+}
+
+.priority-checkbox.p2 {
+    border: 1px solid #f7a736;
+    background-color: #ffe28c;
+}
+
+.priority-checkbox.p1 {
+    border: 1px solid red;
+    background-color: #ff8c8c;
+}
