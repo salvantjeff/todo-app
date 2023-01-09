@@ -320,16 +320,17 @@ function App() {
       return section;
     });
     setTodoSections(newTodoSections);
-    // const newProjects = projects.map(project => {
-    //   if (project.id === inboxID) {
-    //     return {
-    //       ...section,
-    //       data: section.data.filter(todo => todo.id !== currentEditTodo)
-    //     }
-    //   };
-    //   return section;
-    // });
-    // setTodoSections(newTodoSections);
+    const newProjects = projects.map(project => {
+      if (project.id === currentProjectBin) {
+        return {
+          ...project,
+          data: project.data.filter(todo => todo.id !== currentEditTodo)
+        }
+      };
+      return project;
+    });
+    setProjects(newProjects);
+    
     toggleEditForm();
     setEditTodo({
       name: '',
