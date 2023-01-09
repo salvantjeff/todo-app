@@ -268,8 +268,16 @@ function App() {
 
   const [editFormStatus, setEditFormStatus] = useState(false);
   function toggleEditForm() {
-      setEditFormStatus(!editFormStatus);
+    setEditFormStatus(!editFormStatus);
   };
+
+  const [currentEditTodo, setCurrentEditTodo] = useState('');
+  function handleEditClicked(e) {
+    const targetID = e.target.dataset.id;
+    setCurrentEditTodo(targetID);
+    setEditFormStatus(!editFormStatus);
+  };
+  
   useEffect(() => {
       if (editFormStatus) {
           document.body.classList.add('active-edit-form');
@@ -318,7 +326,7 @@ function App() {
                       handleAddNewTask={handleAddNewTask}
                       priorities={priorities}
                       setPriorities={setPriorities}
-                      toggleEditForm={toggleEditForm}
+                      handleEditClicked={handleEditClicked}
                     />}
                   />
                   <Route 
@@ -333,7 +341,7 @@ function App() {
                       priorities={priorities}
                       setPriorities={setPriorities}
                       prioritiesList={prioritiesList}
-                      toggleEditForm={toggleEditForm}
+                      handleEditClicked={handleEditClicked}
                     />}
                   />
                   <Route 
@@ -348,7 +356,7 @@ function App() {
                       handleAddNewTask={handleAddNewTask}
                       priorities={priorities}
                       setPriorities={setPriorities}
-                      toggleEditForm={toggleEditForm}
+                      handleEditClicked={handleEditClicked}
                     />}
                   />
                 </Routes>

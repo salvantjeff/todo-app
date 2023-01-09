@@ -17,7 +17,7 @@ function ProjectsDetail({
     priorities,
     setPriorities,
     prioritiesList,
-    toggleEditForm
+    handleEditClicked,
 }) {
     const { id } = useParams();
 
@@ -111,7 +111,7 @@ function ProjectsDetail({
                                    key={todo.id} 
                                    todo={todo}
                                    handleTodoComplete={handleTodoComplete}
-                                   toggleEditForm={toggleEditForm}
+                                   handleEditClicked={handleEditClicked}
                                    dataID={todo.id}
                                />
                            );

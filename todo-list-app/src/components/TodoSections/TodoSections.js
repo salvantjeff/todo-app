@@ -18,7 +18,7 @@ function TodoSections({
     addTaskFormActive,
     priorities,
     setPriorities,
-    toggleEditForm
+    handleEditClicked,
 }) {
     const { id } = useParams();
 
@@ -92,7 +92,7 @@ function TodoSections({
                                 key={todo.id} 
                                 todo={todo}
                                 handleTodoComplete={handleTodoComplete}
-                                toggleEditForm={toggleEditForm}
+                                handleEditClicked={handleEditClicked}
                                 dataID={todo.id}
                             />
                         );
