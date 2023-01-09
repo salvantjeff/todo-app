@@ -10,7 +10,8 @@ function EditTaskForm({
     handleOnChangeEditForm,
     prioritiesEdit,
     setPrioritiesEdit,
-    handleEditTodoDelete, 
+    handleEditTodoDelete,
+    handleSaveChanges, 
 }) {
     function handleOverlayClicked(e) {
         if (e.target.className === 'edit-task-overlay') {
@@ -59,7 +60,7 @@ function EditTaskForm({
                     ><GrClose/></button>
                 </div>
                 <div className="edit_menu_section">
-                    <form className="editForm" action="#">
+                    <form onSubmit={handleSaveChanges} className="editForm">
                         <div className="edit_todo">
                             <div className="edit_checkbox"></div>
                             <div className="edit_todo_details">

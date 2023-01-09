@@ -376,6 +376,28 @@ function App() {
     setPrioritiesEdit(prioritiesListEdit);
   };
 
+  function handleSaveChanges(e) {
+    e.preventDefault();
+    const newTodoSections = todoSections.map(section => {
+      if (section.id === inboxID) {
+        return {
+          ...section,
+          data: section.data.map(todo => {
+            if (todo.id === currentEditTodo) {
+              return {
+                ...editTodo,
+              };
+            };
+            return todo;
+          })
+        }
+      };
+      return section;
+    });
+    setTodoSections(newTodoSections);
+    toggleEditForm();
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -460,6 +482,7 @@ function App() {
         prioritiesEdit={prioritiesEdit}
         setPrioritiesEdit={setPrioritiesEdit}
         handleEditTodoDelete={handleEditTodoDelete}
+        handleSaveChanges={handleSaveChanges}
       />
     </div>
   );
