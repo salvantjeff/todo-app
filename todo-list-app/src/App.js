@@ -82,19 +82,19 @@ function App() {
     {
       name: 'Personal',
       id: "0d67c5d0-ab6d-4e05-88cb-1981a1187f5a",
-      data: TodosList,
+      data: [],
       icon: <AiFillRightCircle/>,
     },
     {
       name: 'Health',
       id: "c8a41405-f84d-43c4-bfc2-467e11ad27fd",
-      data: TodosList,
+      data: [],
       icon: <AiFillRightCircle/>,
     },
     {
       name: 'School',
       id: "7e84a0aa-2326-4666-a9e2-6ed5d581baef",
-      data: TodosList,
+      data: [],
       icon: <AiFillRightCircle/>,
     },
   ]);
@@ -121,17 +121,17 @@ function App() {
     const today = (new Date()).toDateString();
     let todayTodos = 0;
     for (let item of currAllData) {
-        let formatDate;
-        if (Array.isArray(item.date)) {
-            [formatDate] = [...item.date];
-        } else {
-            formatDate = item.date;
-        };
-        formatDate = formatDate.replace(/-/, '/').replace(/-/, '/');
-        const currItem = (new Date(formatDate)).toDateString();
-        if (today === currItem) {
-            todayTodos += 1;
-        };
+      let formatDate;
+      if (Array.isArray(item.date)) {
+        [formatDate] = [...item.date];
+      } else {
+        formatDate = item.date;
+      };
+      formatDate = formatDate.replace(/-/, '/').replace(/-/, '/');
+      const currItem = (new Date(formatDate)).toDateString();
+      if (today === currItem) {
+        todayTodos += 1;
+      };
     };
     return todayTodos;
   };
@@ -246,21 +246,21 @@ function App() {
     e.preventDefault();
     console.log('Adding new task...');
     const newTodoSections = todoSections.map(section => {
-        if (section.id === inboxID) {
-            return {
-                ...section,
-                data: [...section.data, addTask],
-            };
+      if (section.id === inboxID) {
+        return {
+          ...section,
+          data: [...section.data, addTask],
         };
-        return section;
+      };
+      return section;
     });
     setTodoSections(newTodoSections);
     setAddTask({
-        name: '',
-        description: '',
-        date: '',
-        id: uuidv4(),
-        priority: 4,
+      name: '',
+      description: '',
+      date: '',
+      id: uuidv4(),
+      priority: 4,
     });
     setAddFormTaskActive(false);
     setPriorities(prioritiesList);
@@ -279,11 +279,11 @@ function App() {
   };
   
   useEffect(() => {
-      if (editFormStatus) {
-          document.body.classList.add('active-edit-form');
-      } else {
-          document.body.classList.remove('active-edit-form');
-      };
+    if (editFormStatus) {
+      document.body.classList.add('active-edit-form');
+    } else {
+      document.body.classList.remove('active-edit-form');
+    };
   }, [editFormStatus]);
 
   const [editTodo, setEditTodo] = useState({
@@ -296,13 +296,45 @@ function App() {
 
   function handleOnChangeEditForm(e) {
     const newEditTodo = {
-        ...editTodo,
-        [e.target.name]: [e.target.value]
+      ...editTodo,
+      [e.target.name]: [e.target.value]
     };
     setEditTodo(newEditTodo);
   };
 
   const [prioritiesEdit, setPrioritiesEdit] = useState(prioritiesListEdit);
+   
+  function handleEditTodoDelete() {
+    const newTodoSections = todoSections.map(section => {
+      if (section.id === inboxID) {
+        return {
+          ...section,
+          data: section.data.filter(todo => todo.id !== currentEditTodo)
+        }
+      };
+      return section;
+    });
+    setTodoSections(newTodoSections);
+    // const newProjects = projects.map(project => {
+    //   if (project.id === inboxID) {
+    //     return {
+    //       ...section,
+    //       data: section.data.filter(todo => todo.id !== currentEditTodo)
+    //     }
+    //   };
+    //   return section;
+    // });
+    // setTodoSections(newTodoSections);
+    toggleEditForm();
+    setEditTodo({
+      name: '',
+      description: '',
+      date: '',
+      id: uuidv4(),
+      priority: 4,
+    });
+    setPrioritiesEdit(prioritiesListEdit);
+  };
 
   return (
     <div className="App">
@@ -386,6 +418,7 @@ function App() {
         handleOnChangeEditForm={handleOnChangeEditForm}
         prioritiesEdit={prioritiesEdit}
         setPrioritiesEdit={setPrioritiesEdit}
+        handleEditTodoDelete={handleEditTodoDelete}
       />
     </div>
   );

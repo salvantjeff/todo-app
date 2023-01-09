@@ -9,7 +9,8 @@ function EditTaskForm({
     setEditTodo, 
     handleOnChangeEditForm,
     prioritiesEdit,
-    setPrioritiesEdit 
+    setPrioritiesEdit,
+    handleEditTodoDelete, 
 }) {
     function handleOverlayClicked(e) {
         if (e.target.className === 'edit-task-overlay') {
@@ -135,7 +136,7 @@ function EditTaskForm({
                             >Cancel</button>
                             <button className="save__button" type="submit">Save changes</button>
                         </div>
-                        <div className="delete_section">
+                        <div onClick={handleEditTodoDelete} className="delete_section">
                             <button className="delete_todo" id="delete_todo"><GrTrash color='red' /></button>
                             <label className="delete_todo_label" htmlFor="delete_todo">Delete task</label>
                         </div>
