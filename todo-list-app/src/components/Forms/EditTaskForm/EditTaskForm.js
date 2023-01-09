@@ -115,18 +115,6 @@ function EditTaskForm({
                                         </div>
                                     );
                                 })}
-                                {/* <div className="editPriorityLevel" data-priority="1">
-                                    <BsFillStarFill color='red' size='1.2rem'/>
-                                </div>
-                                <div className="editPriorityLevel" data-priority="2">
-                                    <BsFillSquareFill color='orange' size='1.2rem'/>
-                                </div>
-                                <div className="editPriorityLevel" data-priority="3">
-                                    <BsFillTriangleFill color='blue' size='1.2rem'/>
-                                </div>
-                                <div className="editPriorityLevel" data-priority="4">
-                                    <BsFillCircleFill color='#efefef' size='1.2rem'/>
-                                </div> */}
                             </div>
                         </div>
                         <div className="edit_form__buttons">
