@@ -279,6 +279,26 @@ function App() {
   };
   
   useEffect(() => {
+    function setEditFormContent() {
+      let targetTodoData = {
+        name: '',
+        description: '',
+        date: '',
+        id: uuidv4(),
+        priority: 4,
+      };
+      const allTodosData = [...todoSections[0].data];
+      for (let todo of allTodosData) {
+        if (todo.id === currentEditTodo) {
+          targetTodoData = {...todo};
+        }
+      };
+      setEditTodo(targetTodoData);
+    };
+    setEditFormContent();
+  }, [currentEditTodo]);
+
+  useEffect(() => {
     if (editFormStatus) {
       document.body.classList.add('active-edit-form');
     } else {
@@ -330,7 +350,7 @@ function App() {
       return project;
     });
     setProjects(newProjects);
-    
+
     toggleEditForm();
     setEditTodo({
       name: '',
