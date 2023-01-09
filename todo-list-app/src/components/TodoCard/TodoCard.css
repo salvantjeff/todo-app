@@ -66,8 +66,18 @@
     padding: .5rem .5rem;
     border-radius: 50%;
     background-color: #fff;
+    position: relative;
 }
 
 .edit_button:hover {
     background-color: #ebebeb;
+}
+
+.edit_button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
