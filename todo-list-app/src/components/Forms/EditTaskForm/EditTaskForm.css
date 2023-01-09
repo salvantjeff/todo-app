@@ -9,9 +9,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* visibility: hidden;
-    opacity: 0; */
+    visibility: hidden;
+    opacity: 0;
     overflow-y: auto;
+    transition: opacity 200ms ease-in-out;
+}
+
+.active-edit-form .edit-task-overlay {
+    visibility: visible;
+    opacity: 1;
 }
 
 .edit_menu_wrapper {

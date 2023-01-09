@@ -1,7 +1,12 @@
 import './EditTaskForm.css';
 import { GrClose, GrTrash } from 'react-icons/gr';
 import { FaFlag } from 'react-icons/fa';
-import { BsFillSquareFill, BsFillCircleFill, BsFillTriangleFill, BsFillStarFill } from 'react-icons/bs';
+import { 
+    BsFillSquareFill, 
+    BsFillCircleFill, 
+    BsFillTriangleFill, 
+    BsFillStarFill 
+} from 'react-icons/bs';
 
 function EditTaskForm() {
     return (

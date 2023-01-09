@@ -233,6 +233,18 @@ function App() {
     setPriorities(prioritiesList);
   };
 
+  const [editFormStatus, setEditFormStatus] = useState(false);
+  function toggleEditForm() {
+      setEditFormStatus(!editFormStatus);
+  };
+  useEffect(() => {
+      if (editFormStatus) {
+          document.body.classList.add('active-edit-form');
+      } else {
+          document.body.classList.remove('active-edit-form');
+      };
+  }, [editFormStatus]);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -255,6 +267,7 @@ function App() {
                       handleAddNewTask={handleAddNewTask}
                       priorities={priorities}
                       setPriorities={setPriorities}
+                      toggleEditForm={toggleEditForm}
                     />}
                   />
                   <Route 
@@ -269,6 +282,7 @@ function App() {
                       priorities={priorities}
                       setPriorities={setPriorities}
                       prioritiesList={prioritiesList}
+                      toggleEditForm={toggleEditForm}
                     />}
                   />
                   <Route 
@@ -283,6 +297,7 @@ function App() {
                       handleAddNewTask={handleAddNewTask}
                       priorities={priorities}
                       setPriorities={setPriorities}
+                      toggleEditForm={toggleEditForm}
                     />}
                   />
                 </Routes>
