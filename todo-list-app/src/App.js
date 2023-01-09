@@ -244,9 +244,7 @@ function App() {
           document.body.classList.remove('active-edit-form');
       };
   }, [editFormStatus]);
-  window.addEventListener('click', (e) => {
-    console.log(e.target);
-  })
+
   return (
     <div className="App">
       <BrowserRouter>
