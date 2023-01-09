@@ -33,7 +33,7 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #bdbdbd;
+    /* border-bottom: 1px solid #bdbdbd; */
     font-size: 1rem;
 }
 
