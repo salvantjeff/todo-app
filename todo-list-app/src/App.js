@@ -294,6 +294,20 @@ function App() {
         }
       };
       setEditTodo(targetTodoData);
+
+      const newPrioritiesEdit = prioritiesEdit.map(priority => {
+        if (priority.value === targetTodoData.priority) {
+          return {
+            ...priority,
+            status: 'selected',
+          };
+        };
+        return {
+          ...priority,
+          status: '',
+        };
+      });
+      setPrioritiesEdit(newPrioritiesEdit);
     };
     setEditFormContent();
   }, [currentEditTodo]);
