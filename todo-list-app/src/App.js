@@ -15,6 +15,12 @@ import { BsCalendarEvent } from 'react-icons/bs';
 import { GrInbox } from 'react-icons/gr';
 import { AiFillRightCircle } from 'react-icons/ai';
 import EditTaskForm from './components/Forms/EditTaskForm/EditTaskForm';
+import { 
+  BsFillSquareFill, 
+  BsFillCircleFill, 
+  BsFillTriangleFill, 
+  BsFillStarFill 
+} from 'react-icons/bs';
 
 const prioritiesList = [
   {
@@ -39,6 +45,33 @@ const prioritiesList = [
     value: 4,
     icon: '',
     id: 'fourth-priority',
+    status: 'selected',
+  },
+];
+
+const prioritiesListEdit = [
+  {
+    value: 1,
+    icon: <BsFillStarFill color='red' size='1.2rem'/>,
+    id: 'first-priority-edit',
+    status: '',
+  },
+  {
+    value: 2,
+    icon: <BsFillSquareFill color='orange' size='1.2rem'/>,
+    id: 'second-priority-edit',
+    status: '',
+  },
+  {
+    value: 3,
+    icon: <BsFillTriangleFill color='blue' size='1.2rem'/>,
+    id: 'third-priority-edit',
+    status: '',
+  },
+  {
+    value: 4,
+    icon: <BsFillCircleFill color='#efefef' size='1.2rem'/>,
+    id: 'fourth-priority-edit',
     status: 'selected',
   },
 ];
@@ -261,6 +294,8 @@ function App() {
     setEditTodo(newEditTodo);
   };
 
+  const [prioritiesEdit, setPrioritiesEdit] = useState(prioritiesListEdit);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -341,6 +376,8 @@ function App() {
         editTodo={editTodo}
         setEditTodo={setEditTodo}
         handleOnChangeEditForm={handleOnChangeEditForm}
+        prioritiesEdit={prioritiesEdit}
+        setPrioritiesEdit={setPrioritiesEdit}
       />
     </div>
   );
