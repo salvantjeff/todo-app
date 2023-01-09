@@ -14,6 +14,13 @@ import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
 import { BsCalendarEvent } from 'react-icons/bs';
 import { GrInbox } from 'react-icons/gr';
 import { AiFillRightCircle } from 'react-icons/ai';
+import EditTaskForm from './components/Forms/EditTaskForm/EditTaskForm';
+import { 
+  BsFillSquareFill, 
+  BsFillCircleFill, 
+  BsFillTriangleFill, 
+  BsFillStarFill 
+} from 'react-icons/bs';
 
 const prioritiesList = [
   {
@@ -42,25 +49,52 @@ const prioritiesList = [
   },
 ];
 
+const prioritiesListEdit = [
+  {
+    value: 1,
+    icon: <BsFillStarFill color='red' size='1.2rem'/>,
+    id: 'first-priority-edit',
+    status: '',
+  },
+  {
+    value: 2,
+    icon: <BsFillSquareFill color='orange' size='1.2rem'/>,
+    id: 'second-priority-edit',
+    status: '',
+  },
+  {
+    value: 3,
+    icon: <BsFillTriangleFill color='blue' size='1.2rem'/>,
+    id: 'third-priority-edit',
+    status: '',
+  },
+  {
+    value: 4,
+    icon: <BsFillCircleFill color='#efefef' size='1.2rem'/>,
+    id: 'fourth-priority-edit',
+    status: 'selected',
+  },
+];
+
 function App() {
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
   const [projects, setProjects] = useState([
     {
       name: 'Personal',
       id: "0d67c5d0-ab6d-4e05-88cb-1981a1187f5a",
-      data: TodosList,
+      data: [],
       icon: <AiFillRightCircle/>,
     },
     {
       name: 'Health',
       id: "c8a41405-f84d-43c4-bfc2-467e11ad27fd",
-      data: TodosList,
+      data: [],
       icon: <AiFillRightCircle/>,
     },
     {
       name: 'School',
       id: "7e84a0aa-2326-4666-a9e2-6ed5d581baef",
-      data: TodosList,
+      data: [],
       icon: <AiFillRightCircle/>,
     },
   ]);
@@ -87,17 +121,17 @@ function App() {
     const today = (new Date()).toDateString();
     let todayTodos = 0;
     for (let item of currAllData) {
-        let formatDate;
-        if (Array.isArray(item.date)) {
-            [formatDate] = [...item.date];
-        } else {
-            formatDate = item.date;
-        };
-        formatDate = formatDate.replace(/-/, '/').replace(/-/, '/');
-        const currItem = (new Date(formatDate)).toDateString();
-        if (today === currItem) {
-            todayTodos += 1;
-        };
+      let formatDate;
+      if (Array.isArray(item.date)) {
+        [formatDate] = [...item.date];
+      } else {
+        formatDate = item.date;
+      };
+      formatDate = formatDate.replace(/-/, '/').replace(/-/, '/');
+      const currItem = (new Date(formatDate)).toDateString();
+      if (today === currItem) {
+        todayTodos += 1;
+      };
     };
     return todayTodos;
   };
@@ -212,24 +246,173 @@ function App() {
     e.preventDefault();
     console.log('Adding new task...');
     const newTodoSections = todoSections.map(section => {
-        if (section.id === inboxID) {
-            return {
-                ...section,
-                data: [...section.data, addTask],
-            };
+      if (section.id === inboxID) {
+        return {
+          ...section,
+          data: [...section.data, addTask],
         };
-        return section;
+      };
+      return section;
     });
     setTodoSections(newTodoSections);
     setAddTask({
+      name: '',
+      description: '',
+      date: '',
+      id: uuidv4(),
+      priority: 4,
+    });
+    setAddFormTaskActive(false);
+    setPriorities(prioritiesList);
+  };
+
+  const [editFormStatus, setEditFormStatus] = useState(false);
+  function toggleEditForm() {
+    setEditFormStatus(!editFormStatus);
+  };
+
+  const [currentEditTodo, setCurrentEditTodo] = useState('');
+  function handleEditClicked(e) {
+    const targetID = e.target.dataset.id;
+    setCurrentEditTodo(targetID);
+    setEditFormStatus(!editFormStatus);
+  };
+  
+  useEffect(() => {
+    function setEditFormContent() {
+      let targetTodoData = {
         name: '',
         description: '',
         date: '',
         id: uuidv4(),
         priority: 4,
+      };
+      const allTodosData = [...todoSections[0].data];
+      for (let todo of allTodosData) {
+        if (todo.id === currentEditTodo) {
+          targetTodoData = {...todo};
+        }
+      };
+      setEditTodo(targetTodoData);
+
+      const newPrioritiesEdit = prioritiesEdit.map(priority => {
+        if (priority.value === targetTodoData.priority) {
+          return {
+            ...priority,
+            status: 'selected',
+          };
+        };
+        return {
+          ...priority,
+          status: '',
+        };
+      });
+      setPrioritiesEdit(newPrioritiesEdit);
+    };
+    setEditFormContent();
+  }, [currentEditTodo]);
+
+  useEffect(() => {
+    if (editFormStatus) {
+      document.body.classList.add('active-edit-form');
+    } else {
+      document.body.classList.remove('active-edit-form');
+    };
+  }, [editFormStatus]);
+
+  const [editTodo, setEditTodo] = useState({
+    name: '',
+    description: '',
+    date: '',
+    id: uuidv4(),
+    priority: 4,
+  });
+
+  function handleOnChangeEditForm(e) {
+    const newEditTodo = {
+      ...editTodo,
+      [e.target.name]: [e.target.value]
+    };
+    setEditTodo(newEditTodo);
+  };
+
+  const [prioritiesEdit, setPrioritiesEdit] = useState(prioritiesListEdit);
+  const [currentProjectBin, setCurrentProjectBin] = useState('');
+  function handleProjectClicked(e) {
+    const targetID = e.target.dataset.id;
+    setCurrentProjectBin(targetID);
+  };
+
+  function handleEditTodoDelete() {
+    const newTodoSections = todoSections.map(section => {
+      if (section.id === inboxID) {
+        return {
+          ...section,
+          data: section.data.filter(todo => todo.id !== currentEditTodo)
+        }
+      };
+      return section;
     });
-    setAddFormTaskActive(false);
-    setPriorities(prioritiesList);
+    setTodoSections(newTodoSections);
+    const newProjects = projects.map(project => {
+      if (project.id === currentProjectBin) {
+        return {
+          ...project,
+          data: project.data.filter(todo => todo.id !== currentEditTodo)
+        }
+      };
+      return project;
+    });
+    setProjects(newProjects);
+
+    toggleEditForm();
+    setEditTodo({
+      name: '',
+      description: '',
+      date: '',
+      id: uuidv4(),
+      priority: 4,
+    });
+    setPrioritiesEdit(prioritiesListEdit);
+  };
+
+  function handleSaveChanges(e) {
+    e.preventDefault();
+    const newTodoSections = todoSections.map(section => {
+      if (section.id === inboxID) {
+        return {
+          ...section,
+          data: section.data.map(todo => {
+            if (todo.id === currentEditTodo) {
+              return {
+                ...editTodo,
+              };
+            };
+            return todo;
+          })
+        }
+      };
+      return section;
+    });
+    setTodoSections(newTodoSections);
+    const newProjects = projects.map(project => {
+      if (project.id === currentProjectBin) {
+        return {
+          ...project,
+          data: project.data.map(todo => {
+            if (todo.id === currentEditTodo) {
+              return {
+                ...editTodo,
+              };
+            };
+            return todo;
+          })
+        }
+      };
+      return project;
+    });
+    setProjects(newProjects);
+    toggleEditForm();
   };
 
   return (
@@ -254,6 +437,7 @@ function App() {
                       handleAddNewTask={handleAddNewTask}
                       priorities={priorities}
                       setPriorities={setPriorities}
+                      handleEditClicked={handleEditClicked}
                     />}
                   />
                   <Route 
@@ -268,6 +452,7 @@ function App() {
                       priorities={priorities}
                       setPriorities={setPriorities}
                       prioritiesList={prioritiesList}
+                      handleEditClicked={handleEditClicked}
                     />}
                   />
                   <Route 
@@ -282,6 +467,7 @@ function App() {
                       handleAddNewTask={handleAddNewTask}
                       priorities={priorities}
                       setPriorities={setPriorities}
+                      handleEditClicked={handleEditClicked}
                     />}
                   />
                 </Routes>
@@ -292,6 +478,7 @@ function App() {
                   todaysTodosCount={todaysTodosCount}
                   showProjectForm={showProjectForm}
                   handleRemoveProject={handleRemoveProject}
+                  handleProjectClicked={handleProjectClicked}
                 />
               </div>
             </div>
@@ -303,6 +490,16 @@ function App() {
         handleOnChange={handleOnChange}
         newProject={newProject}
         onSubmit={handleSubmitNewProject}
+      />
+      <EditTaskForm 
+        toggleEditForm={toggleEditForm}
+        editTodo={editTodo}
+        setEditTodo={setEditTodo}
+        handleOnChangeEditForm={handleOnChangeEditForm}
+        prioritiesEdit={prioritiesEdit}
+        setPrioritiesEdit={setPrioritiesEdit}
+        handleEditTodoDelete={handleEditTodoDelete}
+        handleSaveChanges={handleSaveChanges}
       />
     </div>
   );

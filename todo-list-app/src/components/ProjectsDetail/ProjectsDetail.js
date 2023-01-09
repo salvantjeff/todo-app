@@ -16,7 +16,8 @@ function ProjectsDetail({
     addTaskFormActive,
     priorities,
     setPriorities,
-    prioritiesList
+    prioritiesList,
+    handleEditClicked,
 }) {
     const { id } = useParams();
 
@@ -110,6 +111,8 @@ function ProjectsDetail({
                                    key={todo.id} 
                                    todo={todo}
                                    handleTodoComplete={handleTodoComplete}
+                                   handleEditClicked={handleEditClicked}
+                                   dataID={todo.id}
                                />
                            );
                        })}

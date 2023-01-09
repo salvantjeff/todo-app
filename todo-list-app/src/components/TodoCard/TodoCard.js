@@ -1,7 +1,13 @@
 import './TodoCard.css';
 import { MdOutlineModeEditOutline, MdOutlineMoreHoriz } from 'react-icons/md';
 
-function TodoCard({ todo, handleTodoComplete }) {
+function TodoCard({ 
+    todo, 
+    handleTodoComplete, 
+    dataID, 
+    handleEditClicked, 
+}) {
+
     return(
         <div className="section-board__todo-card">
             <div 
@@ -17,8 +23,12 @@ function TodoCard({ todo, handleTodoComplete }) {
                 </div>
                 <div className="todo_details_menu">
                     <button  className="more-details-button"><MdOutlineMoreHoriz/></button>
-                    <div className="delete_box">
-                        <button className="edit_button"><MdOutlineModeEditOutline/></button>
+                    <div>
+                        <button 
+                            data-id={dataID} 
+                            onClick={handleEditClicked} 
+                            className="edit_button"
+                        ><MdOutlineModeEditOutline/></button>
                     </div>
                 </div>
             </div>

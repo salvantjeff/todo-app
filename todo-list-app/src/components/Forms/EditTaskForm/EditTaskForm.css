@@ -1,0 +1,188 @@
+.edit-task-overlay {
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    overflow-y: auto;
+    transition: opacity 200ms ease-in-out;
+}
+
+.active-edit-form .edit-task-overlay {
+    visibility: visible;
+    opacity: 1;
+}
+
+.edit_menu_wrapper {
+    padding: 1em;
+    min-width: 300px;
+    display: grid;
+    background-color: #fff;
+    position: absolute;
+    margin-bottom: 1rem;
+}
+
+.edit_menu_top_bar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #bdbdbd;
+    font-size: 1rem;
+}
+
+.edit_menu_close_button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    padding: 5px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editForm {
+    background-color: #fff;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    font-size: .875rem;
+}
+
+.edit_todo {
+    padding: 1rem 0 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+}
+
+.edit_checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    background-color: lightyellow;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.editForm_area {
+    padding: .5rem;
+    border-radius: 0.8rem;
+    border: 1px solid #bdbdbd;
+    display: grid;
+    gap: 1em;
+}
+
+.edit_input_fields__task {
+    font-size: inherit;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.edit_form__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.edit_cancel__button {
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 1rem;
+    margin-right: 1em;
+    cursor: pointer;
+}
+
+.save__button {
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 1rem;
+    background-color: #e390fc;
+    color: white;
+    cursor: pointer;
+}
+
+.edit_due_date,
+.priority_label {
+    cursor: pointer;
+    font-size: inherit;
+    color: rgb(160, 160, 160);
+}
+
+.priority_section {
+    display: grid;
+    gap: 0.5em;
+}
+
+.priority_options {
+    display: flex;
+    padding-left: 7px;
+}
+
+.priority_options>* {
+    margin-right: 1em;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.delete_section {
+    display: flex;
+    align-items: center;
+    background-color: #efefef;
+    border-radius: 1rem;
+    padding: .125rem .5rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.delete_section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-radius: 1rem;
+}
+
+.delete_todo {
+    border: none;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+}
+
+.delete_todo_label {
+    width: 100%;
+    text-align: left;
+}
+
+.delete_todo_label:hover {
+    font-size: 0.9rem;
+}
+
+.editPriorityLevel {
+    position: relative;
+}
+
+.editPriorityLevel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.editPriorityLevel.selected {
+    border: 1px solid rgb(0, 208, 255);
+}

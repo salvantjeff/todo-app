@@ -16,7 +16,8 @@ function Home({
     setAddFormTaskActive, 
     addTaskFormActive,
     priorities,
-    setPriorities
+    setPriorities,
+    handleEditClicked,
 }) {
     const inboxID = todoSections[0].id;
 
@@ -95,6 +96,8 @@ function Home({
                                 key={todo.id} 
                                 todo={todo}
                                 handleTodoComplete={handleTodoComplete}
+                                handleEditClicked={handleEditClicked}
+                                dataID={todo.id}
                             />
                         );
                     }))}                    
