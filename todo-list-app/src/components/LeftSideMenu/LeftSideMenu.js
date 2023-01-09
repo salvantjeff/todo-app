@@ -9,7 +9,8 @@ function LeftSideMenu({
     setProjects, 
     todaysTodosCount,
     showProjectForm,
-    handleRemoveProject 
+    handleRemoveProject,
+    handleProjectClicked 
 }) {
     
     function handleOnHover(e) {
@@ -65,7 +66,13 @@ function LeftSideMenu({
                             return (
                                 <Link to={`/projects/${project.id}`} key={project.id} className="links">
                                 <div className="side-menu__projects-contents">
-                                    <div onMouseOut={handleMouseOut} onMouseOver={handleOnHover} className="side-menu__section-item">
+                                    <div 
+                                        onClick={handleProjectClicked} 
+                                        onMouseOut={handleMouseOut} 
+                                        onMouseOver={handleOnHover} 
+                                        className="side-menu__section-item"
+                                        data-id={project.id}
+                                    >
                                         <div className="section-item-details">
                                             <div>{project.icon}</div>
                                             <p>{project.name}</p>

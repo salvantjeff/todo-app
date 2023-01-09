@@ -303,7 +303,12 @@ function App() {
   };
 
   const [prioritiesEdit, setPrioritiesEdit] = useState(prioritiesListEdit);
-   
+  const [currentProjectBin, setCurrentProjectBin] = useState('');
+  function handleProjectClicked(e) {
+    const targetID = e.target.dataset.id;
+    setCurrentProjectBin(targetID);
+  };
+
   function handleEditTodoDelete() {
     const newTodoSections = todoSections.map(section => {
       if (section.id === inboxID) {
@@ -399,6 +404,7 @@ function App() {
                   todaysTodosCount={todaysTodosCount}
                   showProjectForm={showProjectForm}
                   handleRemoveProject={handleRemoveProject}
+                  handleProjectClicked={handleProjectClicked}
                 />
               </div>
             </div>
