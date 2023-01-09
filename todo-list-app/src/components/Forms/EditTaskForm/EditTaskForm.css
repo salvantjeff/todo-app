@@ -51,7 +51,6 @@
 
 .editForm {
     background-color: #fff;
-    padding: 1rem;
     display: grid;
     gap: 1rem;
     width: 100%;
@@ -61,17 +60,6 @@
 .edit_todo {
     padding: 1rem 0 0;
     width: 100%;
-    display: grid;
-    grid-template-columns: 30px 1fr;
-}
-
-.edit_checkbox {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #000;
-    background-color: lightyellow;
-    cursor: pointer;
-    border-radius: 50%;
 }
 
 .editForm_area {

@@ -62,7 +62,7 @@ function EditTaskForm({
                 <div className="edit_menu_section">
                     <form onSubmit={handleSaveChanges} className="editForm">
                         <div className="edit_todo">
-                            <div className="edit_checkbox"></div>
+                            {/* <div className="edit_checkbox"></div> */}
                             <div className="edit_todo_details">
                                 <div className="editForm_area">
                                     <div className="edit_input_fields">
