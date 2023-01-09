@@ -320,7 +320,7 @@ function App() {
         newProject={newProject}
         onSubmit={handleSubmitNewProject}
       />
-      <EditTaskForm/>
+      <EditTaskForm toggleEditForm={toggleEditForm}/>
     </div>
   );
 }

@@ -8,13 +8,23 @@ import {
     BsFillStarFill 
 } from 'react-icons/bs';
 
-function EditTaskForm() {
+function EditTaskForm({ toggleEditForm }) {
+    function handleOverlayClicked(e) {
+        if (e.target.className === 'edit-task-overlay') {
+            toggleEditForm();
+        };
+    };
+    
     return (
-        <div className='edit-task-overlay'>
+        <div onClick={handleOverlayClicked} className='edit-task-overlay'>
             <div className="edit_menu_wrapper">
                 <div className="edit_menu_top_bar">
                     <p className="top_bar_title">Your Todo</p>
-                    <button className="edit_menu_close_button"><GrClose/></button>
+                    <button 
+                        className="edit_menu_close_button" 
+                        type='button' 
+                        onClick={toggleEditForm}
+                    ><GrClose/></button>
                 </div>
                 <div className="edit_menu_section">
                     <form className="editForm" action="#">
@@ -65,7 +75,11 @@ function EditTaskForm() {
                             </div>
                         </div>
                         <div className="edit_form__buttons">
-                            <button className="edit_cancel__button">Cancel</button>
+                            <button 
+                                className="edit_cancel__button" 
+                                type='button' 
+                                onClick={toggleEditForm}
+                            >Cancel</button>
                             <button className="save__button" type="submit">Save changes</button>
                         </div>
                         <div className="delete_section">
