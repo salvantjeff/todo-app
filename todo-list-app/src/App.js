@@ -245,6 +245,22 @@ function App() {
       };
   }, [editFormStatus]);
 
+  const [editTodo, setEditTodo] = useState({
+    name: '',
+    description: '',
+    date: '',
+    id: uuidv4(),
+    priority: 4,
+  });
+
+  function handleOnChangeEditForm(e) {
+    const newEditTodo = {
+        ...editTodo,
+        [e.target.name]: [e.target.value]
+    };
+    setEditTodo(newEditTodo);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -320,7 +336,12 @@ function App() {
         newProject={newProject}
         onSubmit={handleSubmitNewProject}
       />
-      <EditTaskForm toggleEditForm={toggleEditForm}/>
+      <EditTaskForm 
+        toggleEditForm={toggleEditForm}
+        editTodo={editTodo}
+        setEditTodo={setEditTodo}
+        handleOnChangeEditForm={handleOnChangeEditForm}
+      />
     </div>
   );
 }

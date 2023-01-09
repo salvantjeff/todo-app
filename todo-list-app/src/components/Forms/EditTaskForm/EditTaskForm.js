@@ -7,8 +7,14 @@ import {
     BsFillTriangleFill, 
     BsFillStarFill 
 } from 'react-icons/bs';
+import { useState } from 'react';
 
-function EditTaskForm({ toggleEditForm }) {
+function EditTaskForm({ 
+    toggleEditForm, 
+    editTodo, 
+    setEditTodo, 
+    handleOnChangeEditForm 
+}) {
     function handleOverlayClicked(e) {
         if (e.target.className === 'edit-task-overlay') {
             toggleEditForm();
@@ -37,16 +43,20 @@ function EditTaskForm({ toggleEditForm }) {
                                             <input 
                                                 type="text" 
                                                 id="edit_task_name" 
-                                                name="edit_task_name" 
+                                                name="name" 
                                                 placeholder="e.g., Read every day"
+                                                value={editTodo.name}
+                                                onChange={handleOnChangeEditForm}
                                             />
                                         </div>
                                         <div className="edit_input_fields__description">
                                             <input 
                                                 type="text" 
                                                 id="edit_task_description" 
-                                                name="edit_task_description" 
+                                                name="description" 
                                                 placeholder="Description"
+                                                value={editTodo.description}
+                                                onChange={handleOnChangeEditForm}
                                             />
                                         </div>
                                     </div>
@@ -55,7 +65,13 @@ function EditTaskForm({ toggleEditForm }) {
                         </div>
                         <div className="date_section">
                             <label className="edit_due_date" htmlFor="edit_due_date">Due date</label>
-                            <input id="edit_due_date" name="edit_due_date" type="date"/>
+                            <input 
+                                id="edit_due_date" 
+                                name="date" 
+                                type="date"
+                                value={editTodo.date}
+                                onChange={handleOnChangeEditForm}
+                            />
                         </div>
                         <div className="priority_section">
                             <div className="priority_label">Priority</div>
