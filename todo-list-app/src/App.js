@@ -395,6 +395,23 @@ function App() {
       return section;
     });
     setTodoSections(newTodoSections);
+    const newProjects = projects.map(project => {
+      if (project.id === currentProjectBin) {
+        return {
+          ...project,
+          data: project.data.map(todo => {
+            if (todo.id === currentEditTodo) {
+              return {
+                ...editTodo,
+              };
+            };
+            return todo;
+          })
+        }
+      };
+      return project;
+    });
+    setProjects(newProjects);
     toggleEditForm();
   };
 
