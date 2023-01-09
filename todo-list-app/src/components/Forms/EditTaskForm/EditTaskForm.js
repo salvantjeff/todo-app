@@ -1,7 +1,7 @@
 import './EditTaskForm.css';
 import { GrClose, GrTrash } from 'react-icons/gr';
 import { FaFlag } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function EditTaskForm({ 
     toggleEditForm, 
