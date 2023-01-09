@@ -169,3 +169,20 @@
 .delete_todo_label:hover {
     font-size: 0.9rem;
 }
+
+.editPriorityLevel {
+    position: relative;
+}
+
+.editPriorityLevel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.editPriorityLevel.selected {
+    border: 1px solid rgb(0, 208, 255);
+}

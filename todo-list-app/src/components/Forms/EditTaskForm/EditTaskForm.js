@@ -7,7 +7,34 @@ import {
     BsFillTriangleFill, 
     BsFillStarFill 
 } from 'react-icons/bs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const prioritiesListEdit = [
+    {
+      value: 1,
+      icon: <BsFillStarFill color='red' size='1.2rem'/>,
+      id: 'first-priority-edit',
+      status: '',
+    },
+    {
+      value: 2,
+      icon: <BsFillSquareFill color='orange' size='1.2rem'/>,
+      id: 'second-priority-edit',
+      status: '',
+    },
+    {
+      value: 3,
+      icon: <BsFillTriangleFill color='blue' size='1.2rem'/>,
+      id: 'third-priority-edit',
+      status: '',
+    },
+    {
+      value: 4,
+      icon: <BsFillCircleFill color='#efefef' size='1.2rem'/>,
+      id: 'fourth-priority-edit',
+      status: 'selected',
+    },
+];
 
 function EditTaskForm({ 
     toggleEditForm, 
@@ -21,6 +48,37 @@ function EditTaskForm({
         };
     };
     
+    const [prioritiesEdit, setPrioritiesEdit] = useState(prioritiesListEdit);
+
+    function handlePrioritySelected(e) {
+        const targetID = e.target.dataset.id;
+        const newPrioritiesEdit = prioritiesEdit.map(priority => {
+            if (priority.id === targetID) {
+                return {
+                    ...priority,
+                    status: 'selected',
+                };
+            };
+            return {
+                ...priority,
+                status: '',
+            };
+        });
+        setPrioritiesEdit(newPrioritiesEdit);
+    };
+
+    useEffect(() => {
+        const [newPriorityValue] = [...prioritiesEdit.filter(priority => priority.status === 'selected')];
+        let newEditTodo = {...editTodo};
+        if (newPriorityValue) {
+            newEditTodo = {
+                ...editTodo,
+                priority: newPriorityValue.value,
+            };
+        };
+        setEditTodo(newEditTodo);
+    }, [prioritiesEdit]);
+
     return (
         <div onClick={handleOverlayClicked} className='edit-task-overlay'>
             <div className="edit_menu_wrapper">
@@ -76,7 +134,19 @@ function EditTaskForm({
                         <div className="priority_section">
                             <div className="priority_label">Priority</div>
                             <div className="priority_options">
-                                <div className="editPriorityLevel" data-priority="1">
+                                {prioritiesEdit.map(priority => {
+                                    return (
+                                        <div 
+                                            onClick={handlePrioritySelected}
+                                            key={priority.id} 
+                                            data-id={priority.id}
+                                            className={`editPriorityLevel ${priority.status}`}
+                                        >
+                                            {priority.icon}
+                                        </div>
+                                    );
+                                })}
+                                {/* <div className="editPriorityLevel" data-priority="1">
                                     <BsFillStarFill color='red' size='1.2rem'/>
                                 </div>
                                 <div className="editPriorityLevel" data-priority="2">
@@ -87,7 +157,7 @@ function EditTaskForm({
                                 </div>
                                 <div className="editPriorityLevel" data-priority="4">
                                     <BsFillCircleFill color='#efefef' size='1.2rem'/>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="edit_form__buttons">
