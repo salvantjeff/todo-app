@@ -21,18 +21,19 @@
 }
 
 .edit_menu_wrapper {
-    padding: 1em;
+    padding: 2rem;
     min-width: 300px;
     display: grid;
-    background-color: #fff;
+    background-color: white;
     position: absolute;
     margin-bottom: 1rem;
+    border-radius: .8rem;
 }
 
 .edit_menu_top_bar {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 0.5em;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #bdbdbd;
     font-size: 1rem;
 }
