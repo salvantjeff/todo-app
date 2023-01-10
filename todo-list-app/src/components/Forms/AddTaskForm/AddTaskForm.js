@@ -139,7 +139,7 @@ function PriorityOptions({ priorities, handleOptionSelected }) {
                         className={`priority-option ${priority.status}`}
                         data-id={priority.id}
                     >
-                        <div>Flag</div>
+                        <div>{priority.icon}</div>
                         <p>Priority {priority.value}</p>
                     </div>
                 );

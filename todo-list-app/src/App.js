@@ -25,25 +25,25 @@ import {
 const prioritiesList = [
   {
     value: 1,
-    icon: '',
+    icon: <BsFillStarFill color='red' size='1.2rem'/>,
     id: 'first-priority',
     status: '',
   },
   {
     value: 2,
-    icon: '',
+    icon: <BsFillSquareFill color='orange' size='1.2rem'/>,
     id: 'second-priority',
     status: '',
   },
   {
     value: 3,
-    icon: '',
+    icon: <BsFillTriangleFill color='blue' size='1.2rem'/>,
     id: 'third-priority',
     status: '',
   },
   {
     value: 4,
-    icon: '',
+    icon: <BsFillCircleFill color='#efefef' size='1.2rem'/>,
     id: 'fourth-priority',
     status: 'selected',
   },
