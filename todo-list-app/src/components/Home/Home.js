@@ -81,8 +81,8 @@ function Home({
         <div className="board-view__content">
             <section className="section-board add-button">
                 <div onClick={handleAddTaskFormActive} className="add-task-button">
-                    <p><GrAdd/></p>
-                    <p>Add task</p>
+                    <p className='add-button-item'><GrAdd/></p>
+                    <p className='add-button-item'>Add task</p>
                 </div>
             </section>
             <section className="section-board view">
