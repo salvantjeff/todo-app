@@ -34,7 +34,7 @@ function TodoCard({
                     <div className="due_date">{convertDateToString(todo.date)}</div>
                 </div>
                 <div className="todo_details_menu">
-                    <button  className="more-details-button"><MdOutlineMoreHoriz/></button>
+                    {/* <button  className="more-details-button"><MdOutlineMoreHoriz/></button> */}
                     <div>
                         <button 
                             data-id={dataID} 
