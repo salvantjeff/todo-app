@@ -112,7 +112,7 @@ function AddTaskForm({
                                 onChange={handleChange}
                             />
                         </div>
-                        <button type='button' className="bin__field">Inbox</button>
+                        {/* <button type='button' className="bin__field">Inbox</button> */}
                     </div>
                     <div className="right_extra_fields">
                         <button 
