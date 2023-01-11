@@ -102,6 +102,11 @@ input {
 
 .priority__field {
     position: relative;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-template-rows: 20px;
+    align-items: center;
+    gap: 10px;
 }
 
 .priority-options {
