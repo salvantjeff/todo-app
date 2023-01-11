@@ -1,10 +1,8 @@
 .board-view__content {
     display: flex;
     flex-grow: 1;
-    /* background-color: pink; */
     height: calc(100vh - (44px + 56px));
     padding: 0px 55px 10px;
-    /* overflow-x: auto; */
     flex-direction: column;
     width: 100%;
 }
@@ -14,22 +12,19 @@
     gap: .5rem;
     cursor: pointer;
     width: max-content;
-    /* background-color: rgb(207, 207, 207); */
 }
 
 .add-task-button:hover {
-    color: rgba(0, 0, 0, .5);
+    opacity: .5;
 }
 
 .section-board {
-    /* background-color: rgb(205, 221, 162); */
     background-color: #fff;
 }
 
 .section-board__view-header {
     background-color: #fff;
     padding: 1rem 0;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.12); */
 }
 
 .section-board.view {
@@ -48,7 +43,6 @@
 }
 
 .section-board__cards {
-    /* background-color: rgb(78, 231, 255); */
     background-color: #fff;
     padding: 0 8px;
     overflow-y: scroll;

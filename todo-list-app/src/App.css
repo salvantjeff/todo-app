@@ -6,6 +6,21 @@
 
 body {
     color: #202020;
+    font-family: SF Pro Text, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+button {
+    cursor: pointer;
+    font: inherit;
+}
+
+input {
+    font: inherit;
+    display: block;
+    width: 100%;
+    padding: 0.5em;
+    outline: none;
+    border: none;
 }
 
 .agenda-view {

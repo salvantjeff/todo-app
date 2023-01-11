@@ -25,25 +25,25 @@ import {
 const prioritiesList = [
   {
     value: 1,
-    icon: '',
+    icon: <BsFillStarFill color='red' size='1.2rem'/>,
     id: 'first-priority',
     status: '',
   },
   {
     value: 2,
-    icon: '',
+    icon: <BsFillSquareFill color='orange' size='1.2rem'/>,
     id: 'second-priority',
     status: '',
   },
   {
     value: 3,
-    icon: '',
+    icon: <BsFillTriangleFill color='blue' size='1.2rem'/>,
     id: 'third-priority',
     status: '',
   },
   {
     value: 4,
-    icon: '',
+    icon: <BsFillCircleFill color='#efefef' size='1.2rem'/>,
     id: 'fourth-priority',
     status: 'selected',
   },
@@ -172,9 +172,13 @@ function App() {
 
   function handleSubmitNewProject(e) {
     e.preventDefault();
+    let projectName = newProject.name ? newProject.name : 'New Project';
     const newUserProjects = [
       ...projects,
-      newProject,
+      {
+        ...newProject,
+        name: projectName
+      },
     ];
     setProjects(newUserProjects);
     setNewProject({
@@ -418,7 +422,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
+        <NavBar 
+          addTaskFormActive={addTaskFormActive} 
+          setAddFormTaskActive={setAddFormTaskActive}
+        />
         <div className="content-wrapper">
           <main className="main-content">
             <div className="main-content__wrapper">

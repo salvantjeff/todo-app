@@ -1,7 +1,7 @@
 import './EditTaskForm.css';
 import { GrClose, GrTrash } from 'react-icons/gr';
 import { FaFlag } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function EditTaskForm({ 
     toggleEditForm, 
@@ -62,7 +62,7 @@ function EditTaskForm({
                 <div className="edit_menu_section">
                     <form onSubmit={handleSaveChanges} className="editForm">
                         <div className="edit_todo">
-                            <div className="edit_checkbox"></div>
+                            {/* <div className="edit_checkbox"></div> */}
                             <div className="edit_todo_details">
                                 <div className="editForm_area">
                                     <div className="edit_input_fields">
@@ -115,18 +115,6 @@ function EditTaskForm({
                                         </div>
                                     );
                                 })}
-                                {/* <div className="editPriorityLevel" data-priority="1">
-                                    <BsFillStarFill color='red' size='1.2rem'/>
-                                </div>
-                                <div className="editPriorityLevel" data-priority="2">
-                                    <BsFillSquareFill color='orange' size='1.2rem'/>
-                                </div>
-                                <div className="editPriorityLevel" data-priority="3">
-                                    <BsFillTriangleFill color='blue' size='1.2rem'/>
-                                </div>
-                                <div className="editPriorityLevel" data-priority="4">
-                                    <BsFillCircleFill color='#efefef' size='1.2rem'/>
-                                </div> */}
                             </div>
                         </div>
                         <div className="edit_form__buttons">

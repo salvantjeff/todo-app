@@ -46,6 +46,7 @@ function AddTaskForm({
             };
         });
         setPriorities(newPriorities);
+        handlePriorityClicked();
     };
 
     useEffect(() => {
@@ -64,6 +65,18 @@ function AddTaskForm({
         setAddFormTaskActive(false);
     };
     console.log(addTask.date);
+    function getPriorityIcon() {
+        let currentIcon = '';
+        const currPriority = addTask.priority;
+        for (let priority of priorities) {
+            if (priority.value === currPriority) {
+                currentIcon = priority.icon;
+            };
+        };
+        return currentIcon;
+    };
+    // console.log('=====>', getPriorityIcon());
+    const currIcon = getPriorityIcon();
     return (
         <form onSubmit={onSubmit} className='taskForm'>
             <div className='taskForm_area'>
@@ -99,7 +112,7 @@ function AddTaskForm({
                                 onChange={handleChange}
                             />
                         </div>
-                        <button type='button' className="bin__field">Inbox</button>
+                        {/* <button type='button' className="bin__field">Inbox</button> */}
                     </div>
                     <div className="right_extra_fields">
                         <button 
@@ -107,7 +120,10 @@ function AddTaskForm({
                             type='button' 
                             className="priority__field"
                         >
-                            {`Priority ${addTask.priority}`}
+                            <div>{currIcon}</div>
+                            <div>
+                                {`Priority ${addTask.priority}`}
+                            </div>
                             <PriorityOptions 
                                 handleOptionSelected={handleOptionSelected}
                                 priorities={priorities}
@@ -139,7 +155,7 @@ function PriorityOptions({ priorities, handleOptionSelected }) {
                         className={`priority-option ${priority.status}`}
                         data-id={priority.id}
                     >
-                        <div>Flag</div>
+                        <div>{priority.icon}</div>
                         <p>Priority {priority.value}</p>
                     </div>
                 );
