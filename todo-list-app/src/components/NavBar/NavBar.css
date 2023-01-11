@@ -27,7 +27,8 @@
 }
 
 .profile-image-container {
-    background-color: rgb(0, 213, 255);
+    /* background-color: rgb(0, 213, 255); */
+    background-color: #ffec9e;
     height: 35px;
     width: 35px;
     border-radius: 50%;
