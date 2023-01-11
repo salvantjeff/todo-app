@@ -1,3 +1,12 @@
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { useEffect, useState } from 'react';
 import './App.css';
 import AddTaskForm from './components/Forms/AddTaskForm/AddTaskForm';
