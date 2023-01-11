@@ -22,6 +22,18 @@ import {
   BsFillStarFill 
 } from 'react-icons/bs';
 import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCeRMbhO43lED1NkZBYg6U99fQwFPPTKw0",
+  authDomain: "todolist-b1e8b.firebaseapp.com",
+  projectId: "todolist-b1e8b",
+  storageBucket: "todolist-b1e8b.appspot.com",
+  messagingSenderId: "413529189719",
+  appId: "1:413529189719:web:da795c4a99d2320d036212"
+};
+
+const app = initializeApp(firebaseConfig);
 
 const prioritiesList = [
   {
