@@ -21,6 +21,7 @@ import {
   BsFillTriangleFill, 
   BsFillStarFill 
 } from 'react-icons/bs';
+import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
 
 const prioritiesList = [
   {
@@ -508,6 +509,7 @@ function App() {
         handleEditTodoDelete={handleEditTodoDelete}
         handleSaveChanges={handleSaveChanges}
       />
+      <AuthenticationPage />
     </div>
   );
 }
