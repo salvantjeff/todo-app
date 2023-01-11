@@ -422,7 +422,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
+        <NavBar 
+          addTaskFormActive={addTaskFormActive} 
+          setAddFormTaskActive={setAddFormTaskActive}
+        />
         <div className="content-wrapper">
           <main className="main-content">
             <div className="main-content__wrapper">
