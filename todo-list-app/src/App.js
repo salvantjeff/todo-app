@@ -43,6 +43,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 const prioritiesList = [
   {
@@ -99,6 +100,25 @@ const prioritiesListEdit = [
 ];
 
 function App() {
+  const [signUpForm, setSignUpForm] = useState({
+    email: '',
+    password: '',
+    id: 'sign-up-form',
+  });
+
+  function handleOnChangeSignUpForm(e) {
+    const newSignUpForm = {
+      ...signUpForm,
+      [e.target.name]: [e.target.value],
+    };
+    setSignUpForm(newSignUpForm);
+  };
+
+  function handleSignUpFormSubmit(e) {
+    e.preventDefault();
+    console.log('Creating an account');
+  };
+
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
   const [projects, setProjects] = useState([
     {
@@ -530,7 +550,11 @@ function App() {
         handleEditTodoDelete={handleEditTodoDelete}
         handleSaveChanges={handleSaveChanges}
       />
-      <AuthenticationPage />
+      <AuthenticationPage 
+        signUpForm={signUpForm}
+        handleOnChangeSignUpForm={handleOnChangeSignUpForm}
+        handleSignUpFormSubmit={handleSignUpFormSubmit}
+      />
     </div>
   );
 }

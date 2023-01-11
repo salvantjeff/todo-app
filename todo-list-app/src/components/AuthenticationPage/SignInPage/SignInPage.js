@@ -3,7 +3,7 @@ import { SignInGoogleButton } from '../GoogleButtons/GoogleButtons';
 
 function SignInPage() {
     return (
-        <div className="sign-in_page">
+        <div className="sign-in_page hide">
             <div className="sign-in_auth_content">
                 <h2 className="sign-in_title">Sign in to continue</h2>
                 <div className="auth-connections">
