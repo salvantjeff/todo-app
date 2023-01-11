@@ -6,10 +6,17 @@ function AuthenticationPage({
     signUpForm, 
     handleOnChangeSignUpForm, 
     handleSignUpFormSubmit,
+    signInForm, 
+    handleOnChangeSignInForm, 
+    handleSignInFormSubmit,
 }) {
     return (
         <div className='authentication-page'>
-            <SignInPage />
+            <SignInPage 
+                signInForm={signInForm}
+                handleOnChangeSignInForm={handleOnChangeSignInForm}
+                handleSignInFormSubmit={handleSignInFormSubmit}
+            />
             <SignUpPage 
                 signUpForm={signUpForm}
                 handleOnChangeSignUpForm={handleOnChangeSignUpForm}

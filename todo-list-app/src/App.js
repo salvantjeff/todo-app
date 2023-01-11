@@ -119,6 +119,25 @@ function App() {
     console.log('Creating an account');
   };
 
+  const [signInForm, setSignInForm] = useState({
+    email: '',
+    password: '',
+    id: 'sign-in-form',
+  });
+
+  function handleOnChangeSignInForm(e) {
+    const newSignInForm = {
+      ...signInForm,
+      [e.target.name]: [e.target.value],
+    };
+    setSignInForm(newSignInForm);
+  };
+
+  function handleSignInFormSubmit(e) {
+    e.preventDefault();
+    console.log('Signing into your account');
+  };
+
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
   const [projects, setProjects] = useState([
     {
@@ -554,6 +573,9 @@ function App() {
         signUpForm={signUpForm}
         handleOnChangeSignUpForm={handleOnChangeSignUpForm}
         handleSignUpFormSubmit={handleSignUpFormSubmit}
+        signInForm={signInForm}
+        handleOnChangeSignInForm={handleOnChangeSignInForm}
+        handleSignInFormSubmit={handleSignInFormSubmit}
       />
     </div>
   );
