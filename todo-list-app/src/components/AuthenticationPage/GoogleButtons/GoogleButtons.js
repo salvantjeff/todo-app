@@ -10,9 +10,9 @@ function SignUpGoogleButton() {
     );
 };
 
-function SignInGoogleButton() {
+function SignInGoogleButton({ signInGoogleClicked }) {
     return (
-        <div className='sing-in-with-google'>
+        <div onClick={signInGoogleClicked} className='sing-in-with-google'>
             <img src={googleIcon} alt='google icon'/>
             <p>Sign in with Google</p>
         </div>

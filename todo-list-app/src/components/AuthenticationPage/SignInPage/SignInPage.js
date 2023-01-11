@@ -5,13 +5,15 @@ function SignInPage({
     signInForm, 
     handleOnChangeSignInForm, 
     handleSignInFormSubmit,
+    signInClicked,
+    signInGoogleClicked,
 }) {
     return (
-        <div className="sign-in_page hide">
+        <div className="sign-in_page">
             <div className="sign-in_auth_content">
                 <h2 className="sign-in_title">Sign in to continue</h2>
                 <div className="auth-connections">
-                    <SignInGoogleButton />
+                    <SignInGoogleButton signInGoogleClicked={signInGoogleClicked}/>
                 </div>
                 <hr className="divider" />
                 <form onSubmit={handleSignInFormSubmit} className="sign-in_form">
@@ -40,7 +42,11 @@ function SignInPage({
                         />
                     </p>
                     <div className="button-item">
-                        <button type="submit" className="sign-in_button">Sign In</button>
+                        <button 
+                            onClick={signInClicked}
+                            type="submit" 
+                            className="sign-in_button"
+                        >Sign In</button>
                     </div>
                     <p className="sign-up_choice">Not a member? <a className="sign-up_link" href="#">Sign up now</a></p>
                 </form>

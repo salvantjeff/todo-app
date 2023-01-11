@@ -9,6 +9,8 @@ function AuthenticationPage({
     signInForm, 
     handleOnChangeSignInForm, 
     handleSignInFormSubmit,
+    signInClicked,
+    signInGoogleClicked,
 }) {
     return (
         <div className='authentication-page'>
@@ -16,6 +18,8 @@ function AuthenticationPage({
                 signInForm={signInForm}
                 handleOnChangeSignInForm={handleOnChangeSignInForm}
                 handleSignInFormSubmit={handleSignInFormSubmit}
+                signInClicked={signInClicked}
+                signInGoogleClicked={signInGoogleClicked}
             />
             <SignUpPage 
                 signUpForm={signUpForm}

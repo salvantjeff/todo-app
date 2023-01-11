@@ -22,6 +22,8 @@ import {
   BsFillStarFill 
 } from 'react-icons/bs';
 import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
+import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const prioritiesList = [
   {
@@ -84,6 +86,24 @@ function App() {
     id: 'sign-up-form',
   });
 
+  const [signInForm, setSignInForm] = useState({
+    email: '',
+    password: '',
+    id: 'sign-in-form',
+  });
+
+  const [user, loading, error] = useAuthState(auth);
+
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    };
+    if (user) {
+      console.log('navigating to home page');
+    };
+  }, [user, loading]);
+
   function handleOnChangeSignUpForm(e) {
     const newSignUpForm = {
       ...signUpForm,
@@ -96,12 +116,6 @@ function App() {
     e.preventDefault();
     console.log('Creating an account');
   };
-
-  const [signInForm, setSignInForm] = useState({
-    email: '',
-    password: '',
-    id: 'sign-in-form',
-  });
 
   function handleOnChangeSignInForm(e) {
     const newSignInForm = {
@@ -116,6 +130,13 @@ function App() {
     console.log('Signing into your account');
   };
 
+  function handleSignInButtonClick() {
+    logInWithEmailAndPassword(signInForm.email,signInForm.password);
+  };
+  function handleSignInGoogleButtonClick() {
+    signInWithGoogle();
+  };
+  
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
   const [projects, setProjects] = useState([
     {
@@ -554,6 +575,8 @@ function App() {
         signInForm={signInForm}
         handleOnChangeSignInForm={handleOnChangeSignInForm}
         handleSignInFormSubmit={handleSignInFormSubmit}
+        signInClicked={handleSignInButtonClick}
+        signInGoogleClicked={handleSignInGoogleButtonClick}
       />
     </div>
   );
