@@ -64,7 +64,7 @@ function AddTaskForm({
     function handleCancelClicked() {
         setAddFormTaskActive(false);
     };
-    console.log(addTask.date);
+    // console.log(addTask.date);
     function getPriorityIcon() {
         let currentIcon = '';
         const currPriority = addTask.priority;

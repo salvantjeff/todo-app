@@ -1,12 +1,3 @@
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import { useEffect, useState } from 'react';
 import './App.css';
 import AddTaskForm from './components/Forms/AddTaskForm/AddTaskForm';
@@ -31,19 +22,6 @@ import {
   BsFillStarFill 
 } from 'react-icons/bs';
 import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
-import { initializeApp } from "firebase/app";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCeRMbhO43lED1NkZBYg6U99fQwFPPTKw0",
-  authDomain: "todolist-b1e8b.firebaseapp.com",
-  projectId: "todolist-b1e8b",
-  storageBucket: "todolist-b1e8b.appspot.com",
-  messagingSenderId: "413529189719",
-  appId: "1:413529189719:web:da795c4a99d2320d036212"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
 const prioritiesList = [
   {
@@ -267,7 +245,7 @@ function App() {
           };
         };
       };
-      console.log('Projects to add: ', projectsToAdd);
+      // console.log('Projects to add: ', projectsToAdd);
       const newTodoSections = todoSections.map(section => {
         if (section.id === inboxID) {
           return {
@@ -296,7 +274,7 @@ function App() {
     return hm;
   };
   const allTodosHashMap = createAllTodosHashMap();
-  console.log('ALL TODOS HASH MAP: ',allTodosHashMap);
+  // console.log('ALL TODOS HASH MAP: ',allTodosHashMap);
   const [priorities, setPriorities] = useState(prioritiesList);
   const [addTaskFormActive, setAddFormTaskActive] = useState(false);
   const [addTask, setAddTask] = useState({

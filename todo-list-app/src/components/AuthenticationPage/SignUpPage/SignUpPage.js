@@ -7,7 +7,7 @@ function SignUpPage({
     handleSignUpFormSubmit,
 }) {
     return (
-        <div className="sign-up_page hide">
+        <div className="sign-up_page">
             <div className="sign-up_auth_content">
                 <h2 className="sign-up_title">Create account to get started</h2>
                 <div className="auth-connections">
