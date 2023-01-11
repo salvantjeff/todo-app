@@ -46,6 +46,7 @@ function AddTaskForm({
             };
         });
         setPriorities(newPriorities);
+        handlePriorityClicked();
     };
 
     useEffect(() => {
