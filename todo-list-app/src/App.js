@@ -172,9 +172,13 @@ function App() {
 
   function handleSubmitNewProject(e) {
     e.preventDefault();
+    let projectName = newProject.name ? newProject.name : 'New Project';
     const newUserProjects = [
       ...projects,
-      newProject,
+      {
+        ...newProject,
+        name: projectName
+      },
     ];
     setProjects(newUserProjects);
     setNewProject({
