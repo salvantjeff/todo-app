@@ -4,7 +4,7 @@
     right: 0;
     width: 100%;
     /* background-color: rgb(166, 178, 242); */
-    background-color: rgb(184, 166, 242);
+    background-color: rgb(0, 234, 255);
     display: flex;
     justify-content: space-between;
     padding: .5rem 1rem;
@@ -28,7 +28,7 @@
 }
 
 .profile-image-container {
-    /* background-color: rgb(0, 213, 255); */
+    /* background-color: rgb(255, 128, 0); */
     background-color: #ffec9e;
     height: 35px;
     width: 35px;
