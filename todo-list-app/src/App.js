@@ -7,7 +7,7 @@ import LeftSideMenu from './components/LeftSideMenu/LeftSideMenu';
 import NavBar from './components/NavBar/NavBar';
 import TodosList from './data/TodosList.json';
 import { v4 as uuidv4 } from 'uuid';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import ProjectsDetail from './components/ProjectsDetail/ProjectsDetail';
 import TodoSections from './components/TodoSections/TodoSections';
 import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
@@ -21,6 +21,13 @@ import {
   BsFillTriangleFill, 
   BsFillStarFill 
 } from 'react-icons/bs';
+import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
+import { 
+  auth, 
+  signInWithGoogle,
+  logout
+} from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const prioritiesList = [
   {
@@ -77,6 +84,23 @@ const prioritiesListEdit = [
 ];
 
 function App() {
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    };
+    if (user) {
+      console.log('navigating to home page');
+      navigate("/app/today");
+    };
+  }, [user, loading]);
+
+  function handleSignInGoogleButtonClick() {
+    signInWithGoogle();
+  };
+  
   const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
   const [projects, setProjects] = useState([
     {
@@ -206,7 +230,7 @@ function App() {
           };
         };
       };
-      console.log('Projects to add: ', projectsToAdd);
+      // console.log('Projects to add: ', projectsToAdd);
       const newTodoSections = todoSections.map(section => {
         if (section.id === inboxID) {
           return {
@@ -235,7 +259,7 @@ function App() {
     return hm;
   };
   const allTodosHashMap = createAllTodosHashMap();
-  console.log('ALL TODOS HASH MAP: ',allTodosHashMap);
+  // console.log('ALL TODOS HASH MAP: ',allTodosHashMap);
   const [priorities, setPriorities] = useState(prioritiesList);
   const [addTaskFormActive, setAddFormTaskActive] = useState(false);
   const [addTask, setAddTask] = useState({
@@ -421,10 +445,10 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
         <NavBar 
           addTaskFormActive={addTaskFormActive} 
           setAddFormTaskActive={setAddFormTaskActive}
+          logout={logout}
         />
         <div className="content-wrapper">
           <main className="main-content">
@@ -432,6 +456,14 @@ function App() {
               <div className="agenda-view">
                 {/* <Header /> */}
                 <Routes>
+                  <Route 
+                    path='/'
+                    element={
+                      <AuthenticationPage 
+                        signInWithGoogle={handleSignInGoogleButtonClick}
+                      />
+                    }
+                  />
                   <Route 
                     path='/app/today' 
                     element={<Home 
@@ -491,7 +523,6 @@ function App() {
             </div>
           </main>
         </div>
-      </BrowserRouter>
       <AddProjectForm 
         closeProjectForm={closeProjectForm}
         handleOnChange={handleOnChange}

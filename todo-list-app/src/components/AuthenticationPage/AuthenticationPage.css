@@ -1,0 +1,128 @@
+.authentication-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 7;
+    visibility: visible;
+    opacity: 1;
+}
+
+.close-auth-page .authentication-page {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.authentication-page.hide {
+    display: none;
+}
+
+.input-item>input {
+    border: 1px solid #000;
+    padding: 1rem .75rem;
+    width: 100%;
+    font-size: inherit;
+    border: none;
+    background-color: rgb(238, 238, 238);
+    border-radius: .5rem;
+    outline-color: black;
+    transition: outline 500ms ease-in-out;
+}
+
+.input-item>input:focus {
+    outline: auto;
+}
+
+.authentication-page label {
+    font-size: inherit;
+    display: block;
+    margin-bottom: .25rem;
+    font-weight: 600;
+}
+
+.authentication-page button {
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.sign-up_page,
+.sign-in_page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.sign-up_page.hide,
+.sign-in_page.hide {
+    display: none;
+}
+
+.sign-up_auth_content,
+.sign-in_auth_content {
+    border-radius: 1rem;
+    box-shadow: 0 0 .5rem #bdbdbd;
+    background-color: white;
+    padding: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    width: clamp(300px, 50vw, 350px);
+}
+
+.sign-up_form,
+.sign-in_form {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    margin: auto;
+    padding-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.button-item {
+    background-color: white;
+}
+
+.sign-up_button,
+.sign-in_button {
+    display: block;
+    border: none;
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+    color: white;
+    background-color: rgb(0, 170, 255);
+    width: 100%;
+}
+
+/* Divider */
+.divider {
+    border: none;
+    border-top: 1px double #bdbdbd;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 0px;
+    margin: 1rem 0;
+}
+
+.divider:after {
+    background: white;
+    content: 'Or';
+    padding: 0 1rem;
+    position: relative;
+    top: -13px;
+}
+
+.sign-in_choice,
+.sign-up_choice {
+    text-align: center;
+}
+
+.sign-in_link,
+.sign-up_link {
+    text-decoration: none;
+    color: rgb(0, 170, 255);
+}
