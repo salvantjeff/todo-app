@@ -105,19 +105,19 @@ function App() {
   const [projects, setProjects] = useState([
     {
       name: 'Personal',
-      id: "0d67c5d0-ab6d-4e05-88cb-1981a1187f5a",
+      id: "0d67c5d0-ab6d-4e05-88cb-1981a118",
       data: [],
       icon: <BsFillArrowRightCircleFill/>,
     },
     {
       name: 'Health',
-      id: "c8a41405-f84d-43c4-bfc2-467e11ad27fd",
+      id: "c8a41405-f84d-43c4-bfc2-467e11ad",
       data: [],
       icon: <BsFillArrowRightCircleFill/>,
     },
     {
       name: 'School',
-      id: "7e84a0aa-2326-4666-a9e2-6ed5d581baef",
+      id: "7e84a0aa-2326-4666-a9e2-6ed5d581",
       data: [],
       icon: <BsFillArrowRightCircleFill/>,
     },
@@ -132,7 +132,7 @@ function App() {
     },
     {
       name: 'Today',
-      id: "3ba46678-72b7-4bbd-a781-28201b31935e",
+      id: "3ba46678-72b7-4bbd-a781-28201b31",
       data: [],
       icon: <BsCalendarEvent/>,
     },
