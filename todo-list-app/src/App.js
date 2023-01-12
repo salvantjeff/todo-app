@@ -101,7 +101,7 @@ function App() {
     signInWithGoogle();
   };
   
-  const inboxID = "26a8cd00-0e2b-4c6c-b047-3373843d261a";
+  const inboxID = "inbox";
   const [projects, setProjects] = useState([
     {
       name: 'Personal',
@@ -126,7 +126,7 @@ function App() {
   const [todoSections, setTodoSections] = useState([
     {
       name: 'Inbox',
-      id: "26a8cd00-0e2b-4c6c-b047-3373843d261a",
+      id: "inbox",
       data: TodosList,
       icon: <GrInbox/>,
     },
