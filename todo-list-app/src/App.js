@@ -13,13 +13,13 @@ import TodoSections from './components/TodoSections/TodoSections';
 import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
 import { BsCalendarEvent } from 'react-icons/bs';
 import { GrInbox } from 'react-icons/gr';
-import { AiFillRightCircle } from 'react-icons/ai';
 import EditTaskForm from './components/Forms/EditTaskForm/EditTaskForm';
 import { 
   BsFillSquareFill, 
   BsFillCircleFill, 
   BsFillTriangleFill, 
-  BsFillStarFill 
+  BsFillStarFill,
+  BsFillArrowRightCircleFill 
 } from 'react-icons/bs';
 import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
 import { 
@@ -107,19 +107,19 @@ function App() {
       name: 'Personal',
       id: "0d67c5d0-ab6d-4e05-88cb-1981a1187f5a",
       data: [],
-      icon: <AiFillRightCircle/>,
+      icon: <BsFillArrowRightCircleFill/>,
     },
     {
       name: 'Health',
       id: "c8a41405-f84d-43c4-bfc2-467e11ad27fd",
       data: [],
-      icon: <AiFillRightCircle/>,
+      icon: <BsFillArrowRightCircleFill/>,
     },
     {
       name: 'School',
       id: "7e84a0aa-2326-4666-a9e2-6ed5d581baef",
       data: [],
-      icon: <AiFillRightCircle/>,
+      icon: <BsFillArrowRightCircleFill/>,
     },
   ]);
 
@@ -183,7 +183,7 @@ function App() {
     name: '',
     id: uuidv4(),
     data: [],
-    icon: <AiFillRightCircle/>,
+    icon: <BsFillArrowRightCircleFill/>,
   });
 
   function handleOnChange(e) {
@@ -209,7 +209,7 @@ function App() {
       name: '',
       id: uuidv4(),
       data: [],
-      icon: <AiFillRightCircle/>,
+      icon: <BsFillArrowRightCircleFill/>,
     });
     setProjectFormStatus(false);
   };

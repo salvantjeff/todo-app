@@ -3,13 +3,14 @@
     top: 0;
     right: 0;
     width: 100%;
-    background-color: rgb(167, 228, 159);
+    /* background-color: rgb(166, 178, 242); */
+    background-color: rgb(184, 166, 242);
     display: flex;
     justify-content: space-between;
     padding: .5rem 1rem;
     align-items: center;
     height: 44px;
-    background-image: url('https://images.unsplash.com/photo-1629196914168-3a2652305f9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGFic3RyYWN0JTIwYXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60');
+    background-image: url('../../img/blue.jpg');
     background-size: cover;
     background-position: center;
 }
