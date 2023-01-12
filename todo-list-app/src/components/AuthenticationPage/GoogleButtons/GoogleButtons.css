@@ -1,5 +1,6 @@
 .sing-up-with-google,
-.sing-in-with-google {
+.sing-in-with-google,
+.continue-with-google {
     position: relative;
     cursor: pointer;
     display: grid;
@@ -8,12 +9,13 @@
     gap: 1rem;
     padding: .5rem;
     border-radius: .5rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     box-shadow: 2px 2px .2rem #d3d3d3;
 }
 
 .sing-up-with-google::after,
-.sing-in-with-google::after {
+.sing-in-with-google::after,
+.continue-with-google::after {
     content: '';
     position: absolute;
     top: 0;
@@ -23,7 +25,8 @@
 }
 
 .sing-up-with-google>img,
-.sing-in-with-google>img {
+.sing-in-with-google>img,
+.continue-with-google>img {
     width: 100%;
     height: 100%;
     object-fit: cover;

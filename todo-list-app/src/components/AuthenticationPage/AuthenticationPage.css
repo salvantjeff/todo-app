@@ -6,6 +6,13 @@
     bottom: 0;
     background-color: white;
     z-index: 7;
+    visibility: visible;
+    opacity: 1;
+}
+
+.close-auth-page .authentication-page {
+    visibility: hidden;
+    opacity: 0;
 }
 
 .authentication-page.hide {

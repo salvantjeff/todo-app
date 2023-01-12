@@ -43,7 +43,6 @@ function SignInPage({
                     </p>
                     <div className="button-item">
                         <button 
-                            onClick={signInClicked}
                             type="submit" 
                             className="sign-in_button"
                         >Sign In</button>

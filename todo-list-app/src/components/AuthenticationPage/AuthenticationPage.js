@@ -1,31 +1,10 @@
 import './AuthenticationPage.css';
-import SignInPage from './SignInPage/SignInPage';
-import SignUpPage from './SignUpPage/SignUpPage';
+import GoogleAuthPage from './GoogleAuthPage/GoogleAuthPage';
 
-function AuthenticationPage({ 
-    signUpForm, 
-    handleOnChangeSignUpForm, 
-    handleSignUpFormSubmit,
-    signInForm, 
-    handleOnChangeSignInForm, 
-    handleSignInFormSubmit,
-    signInClicked,
-    signInGoogleClicked,
-}) {
+function AuthenticationPage({ signInWithGoogle }) {
     return (
         <div className='authentication-page'>
-            <SignInPage 
-                signInForm={signInForm}
-                handleOnChangeSignInForm={handleOnChangeSignInForm}
-                handleSignInFormSubmit={handleSignInFormSubmit}
-                signInClicked={signInClicked}
-                signInGoogleClicked={signInGoogleClicked}
-            />
-            <SignUpPage 
-                signUpForm={signUpForm}
-                handleOnChangeSignUpForm={handleOnChangeSignUpForm}
-                handleSignUpFormSubmit={handleSignUpFormSubmit}
-            />
+            <GoogleAuthPage signInWithGoogle={signInWithGoogle} />
         </div>
     );
 };

@@ -45,6 +45,7 @@ const signInWithGoogle = async () => {
         email: user.email,
       });
     }
+    document.body.classList.add('close-auth-page');
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -56,7 +57,7 @@ const logInWithEmailAndPassword = async (email, password) => {
         await signInWithEmailAndPassword(auth, email, password);
         console.log('SUCCESS sign in');
     } catch (err) {
-        console.error(err);
+        console.error(err.code);
         alert(err.message);
     }
 };
@@ -71,6 +72,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
         authProvider: "local",
         email,
       });
+      console.log('New account created');
     } catch (err) {
       console.error(err);
       alert(err.message);

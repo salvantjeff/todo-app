@@ -19,4 +19,17 @@ function SignInGoogleButton({ signInGoogleClicked }) {
     );
 };
 
-export { SignUpGoogleButton, SignInGoogleButton };
+function ContinueWithGoogleButton({ signInWithGoogle }) {
+    return (
+        <div onClick={signInWithGoogle} className='continue-with-google'>
+            <img src={googleIcon} alt='google icon'/>
+            <p>Continue with Google</p>
+        </div>
+    );
+};
+
+export { 
+    SignUpGoogleButton, 
+    SignInGoogleButton, 
+    ContinueWithGoogleButton 
+};

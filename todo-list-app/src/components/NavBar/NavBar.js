@@ -4,7 +4,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { GrHomeRounded, GrAdd } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 
-function NavBar({ setAddFormTaskActive, addTaskFormActive }) {
+function NavBar({ setAddFormTaskActive, addTaskFormActive, logout }) {
     const [menuStatus, setMenuStatus] = useState(false);
     
     function handleMenuClicked() {
@@ -32,6 +32,7 @@ function NavBar({ setAddFormTaskActive, addTaskFormActive }) {
                 </Link>
             </div>
             <div className="right-buttons">
+                <div onClick={logout}>log out</div>
                 <div onClick={handleAddTaskFormActive}><GrAdd /></div>
                 <div className="profile-image-container">
                     J

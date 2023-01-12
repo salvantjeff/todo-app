@@ -22,7 +22,11 @@ import {
   BsFillStarFill 
 } from 'react-icons/bs';
 import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
-import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./firebase";
+import { 
+  auth, 
+  signInWithGoogle,
+  logout
+} from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const prioritiesList = [
@@ -80,18 +84,6 @@ const prioritiesListEdit = [
 ];
 
 function App() {
-  const [signUpForm, setSignUpForm] = useState({
-    email: '',
-    password: '',
-    id: 'sign-up-form',
-  });
-
-  const [signInForm, setSignInForm] = useState({
-    email: '',
-    password: '',
-    id: 'sign-in-form',
-  });
-
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
@@ -104,35 +96,15 @@ function App() {
     };
   }, [user, loading]);
 
-  function handleOnChangeSignUpForm(e) {
-    const newSignUpForm = {
-      ...signUpForm,
-      [e.target.name]: [e.target.value],
-    };
-    setSignUpForm(newSignUpForm);
-  };
+  // async function handleSignInGoogleButtonClick() {
+  //   try {
+  //     await signInWithGoogle();
+  //     document.body.classList.add('close-auth-page')
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  function handleSignUpFormSubmit(e) {
-    e.preventDefault();
-    console.log('Creating an account');
-  };
-
-  function handleOnChangeSignInForm(e) {
-    const newSignInForm = {
-      ...signInForm,
-      [e.target.name]: [e.target.value],
-    };
-    setSignInForm(newSignInForm);
-  };
-
-  function handleSignInFormSubmit(e) {
-    e.preventDefault();
-    console.log('Signing into your account');
-  };
-
-  function handleSignInButtonClick() {
-    logInWithEmailAndPassword(signInForm.email,signInForm.password);
-  };
   function handleSignInGoogleButtonClick() {
     signInWithGoogle();
   };
@@ -485,6 +457,7 @@ function App() {
         <NavBar 
           addTaskFormActive={addTaskFormActive} 
           setAddFormTaskActive={setAddFormTaskActive}
+          logout={logout}
         />
         <div className="content-wrapper">
           <main className="main-content">
@@ -569,14 +542,7 @@ function App() {
         handleSaveChanges={handleSaveChanges}
       />
       <AuthenticationPage 
-        signUpForm={signUpForm}
-        handleOnChangeSignUpForm={handleOnChangeSignUpForm}
-        handleSignUpFormSubmit={handleSignUpFormSubmit}
-        signInForm={signInForm}
-        handleOnChangeSignInForm={handleOnChangeSignInForm}
-        handleSignInFormSubmit={handleSignInFormSubmit}
-        signInClicked={handleSignInButtonClick}
-        signInGoogleClicked={handleSignInGoogleButtonClick}
+        signInWithGoogle={handleSignInGoogleButtonClick}
       />
     </div>
   );
