@@ -93,7 +93,7 @@ function App() {
     };
     if (user) {
       console.log('navigating to home page');
-      navigate("/app/today");
+      navigate("/sections/inbox");
     };
   }, [user, loading]);
 
