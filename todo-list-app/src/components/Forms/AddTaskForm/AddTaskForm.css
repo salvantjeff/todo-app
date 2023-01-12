@@ -86,6 +86,11 @@
     color: white;
 }
 
+.add_task__button:hover,
+.cancel__button:hover {
+    opacity: .7;
+}
+
 .priority__field {
     position: relative;
     display: grid;
