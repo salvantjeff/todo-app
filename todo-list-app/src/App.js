@@ -7,7 +7,7 @@ import LeftSideMenu from './components/LeftSideMenu/LeftSideMenu';
 import NavBar from './components/NavBar/NavBar';
 import TodosList from './data/TodosList.json';
 import { v4 as uuidv4 } from 'uuid';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import ProjectsDetail from './components/ProjectsDetail/ProjectsDetail';
 import TodoSections from './components/TodoSections/TodoSections';
 import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
@@ -85,7 +85,7 @@ const prioritiesListEdit = [
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (loading) {
       // maybe trigger a loading screen
@@ -93,17 +93,9 @@ function App() {
     };
     if (user) {
       console.log('navigating to home page');
+      navigate("/app/today");
     };
   }, [user, loading]);
-
-  // async function handleSignInGoogleButtonClick() {
-  //   try {
-  //     await signInWithGoogle();
-  //     document.body.classList.add('close-auth-page')
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   function handleSignInGoogleButtonClick() {
     signInWithGoogle();
@@ -453,7 +445,6 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
         <NavBar 
           addTaskFormActive={addTaskFormActive} 
           setAddFormTaskActive={setAddFormTaskActive}
@@ -465,6 +456,14 @@ function App() {
               <div className="agenda-view">
                 {/* <Header /> */}
                 <Routes>
+                  <Route 
+                    path='/'
+                    element={
+                      <AuthenticationPage 
+                        signInWithGoogle={handleSignInGoogleButtonClick}
+                      />
+                    }
+                  />
                   <Route 
                     path='/app/today' 
                     element={<Home 
@@ -524,7 +523,6 @@ function App() {
             </div>
           </main>
         </div>
-      </BrowserRouter>
       <AddProjectForm 
         closeProjectForm={closeProjectForm}
         handleOnChange={handleOnChange}
@@ -540,9 +538,6 @@ function App() {
         setPrioritiesEdit={setPrioritiesEdit}
         handleEditTodoDelete={handleEditTodoDelete}
         handleSaveChanges={handleSaveChanges}
-      />
-      <AuthenticationPage 
-        signInWithGoogle={handleSignInGoogleButtonClick}
       />
     </div>
   );

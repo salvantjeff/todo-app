@@ -45,7 +45,7 @@ const signInWithGoogle = async () => {
         email: user.email,
       });
     }
-    document.body.classList.add('close-auth-page');
+    // document.body.classList.add('close-auth-page');
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -91,6 +91,7 @@ const sendPasswordReset = async (email) => {
 
 const logout = () => {
     signOut(auth);
+    console.log('logged out');
 };
 
 export {
