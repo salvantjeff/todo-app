@@ -106,19 +106,78 @@ function App() {
     {
       name: 'Personal',
       id: "0d67c5d0-ab6d-4e05-88cb-1981a118",
-      data: [],
+      data: [
+        {
+          "name": "Go watch the new Avatar",
+          "description": "In Imax 3D!",
+          "date": "2023-01-13",
+          "id": "c50088ec-3c5d-436f-b21a-f2489089",
+          "priority": 3
+        },
+        {
+          "name": "Practice dancing",
+          "description": "Popping and gliding",
+          "date": "2023-01-13",
+          "id": "z1jiq44ec-a41b-1888-b1a-7610g2049",
+          "priority": 4
+        },
+        {
+          "name": "Read Striking Thoughts",
+          "description": "Minimum of 25 pages",
+          "date": "2023-01-06",
+          "id": "9e0088ec-37dd-4532-8d5d-e1c19f3a",
+          "priority": 3
+        },
+      ],
       icon: <BsFillArrowRightCircleFill/>,
     },
     {
       name: 'Health',
       id: "c8a41405-f84d-43c4-bfc2-467e11ad",
-      data: [],
+      data: [
+        {
+          "name": "Get morning sunlight exposure",
+          "description": "Good for sleeping well :)",
+          "date": "2023-01-13",
+          "id": "bc4gjk0ec-a21b-1214-zzz-9998g-jui5yo",
+          "priority": 1
+        },
+        {
+          "name": "Workout - push/pull/legs",
+          "description": "Leg day! progressive overload",
+          "date": "2023-01-10",
+          "id": "7a7a3a1c-436f-3c5d-b21a-529a458b",
+          "priority": 2
+        },
+        {
+          "name": "Early morning run",
+          "description": "Start day off strong - 5k but 10k would be better",
+          "date": "2023-01-13",
+          "id": "ce8688ec-b21a-714-b-1a-fh48g08yi",
+          "priority": 1
+        },
+        {
+          "name": "Meditate",
+          "description": "Use waking up app",
+          "date": "2023-01-08",
+          "id": "be86fcf3-8506-4d25-be3d-f2489089",
+          "priority": 2
+        },
+      ],
       icon: <BsFillArrowRightCircleFill/>,
     },
     {
       name: 'School',
       id: "7e84a0aa-2326-4666-a9e2-6ed5d581",
-      data: [],
+      data: [
+        {
+          "name": "Review your day",
+          "description": "what went well and what didn't. Make adjustments for next day :)",
+          "date": "2023-01-14",
+          "id": "xc4644ec-a21b-1214-b1a-1148g12yo",
+          "priority": 4
+        },
+      ],
       icon: <BsFillArrowRightCircleFill/>,
     },
   ]);
