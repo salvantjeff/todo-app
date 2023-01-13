@@ -19,6 +19,9 @@ Improvements to make:
 14. Persistent data per user account - using firebase FireStore
 15. Change date color for overdue todos
 16. Add a section for this weeks todos 
+17. Add filter todo cards button (based on priority or recent date)
+18. Maybe change description to be a textarea on both add/editTaskForms
+19. Decide what default todo cards to display when user 1st logs in
 =======================================================================
 Improvements currently working on:
 7. Change inbox id to 'app/inbox' and make it the home page not today

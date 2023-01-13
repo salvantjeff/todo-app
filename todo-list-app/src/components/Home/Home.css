@@ -45,7 +45,7 @@
 .section-board__cards {
     background-color: #fff;
     padding: 0 8px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     max-height: 500px;
 }

@@ -178,3 +178,13 @@
     border: 1px solid rgb(225, 225, 225);
     border-radius: .3rem;
 }
+
+.delete_section:hover,
+.edit_cancel__button:hover,
+.save__button:hover {
+    opacity: .7;
+}
+
+.top_bar_title {
+    font-weight: 600;
+}

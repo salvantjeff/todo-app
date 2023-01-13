@@ -39,13 +39,17 @@
 }
 
 #new_project_name {
-    box-shadow: inset 0 0 3px #bdbdbd;
+    /* box-shadow: inset 0 0 3px #bdbdbd; */
+    border-radius: 0.8rem;
+    border: 1px solid rgba(0, 0, 0, .12);
+    padding: .5rem;
 }
 
 .popup_buttons {
     display: grid;
     gap: 0.5em;
     font-size: .875rem;
+    margin-top: 1.5rem;
 }
 
 .popup_cancel {
@@ -60,4 +64,14 @@
     color: white;
     border-radius: 2em;
     border: none;
+}
+
+.popup_cancel:hover,
+.popup_submit:hover {
+    opacity: .7;
+}
+
+.popup_name_input {
+    display: grid;
+    gap: .5rem;
 }
