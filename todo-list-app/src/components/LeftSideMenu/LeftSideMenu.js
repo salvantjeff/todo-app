@@ -29,7 +29,7 @@ function LeftSideMenu({
                         {todoSections.map(section => {
                             if (section.name === 'Today') {
                                 return (
-                                    <Link to={`/app/today`} key={section.id} className="links">
+                                    <Link to={`/todo-app/today`} key={section.id} className="links">
                                         <div className="side-menu__section-item">
                                             <div className="section-item-details">
                                                 <div>{section.icon}</div>
@@ -43,7 +43,7 @@ function LeftSideMenu({
                                 )
                             }
                             return (
-                                <Link to={`/sections/${section.id}`} key={section.id} className="links">
+                                <Link to={`/todo-app/sections/${section.id}`} key={section.id} className="links">
                                     <div className="side-menu__section-item">
                                         <div className="section-item-details">
                                             <div>{section.icon}</div>
@@ -64,7 +64,7 @@ function LeftSideMenu({
                         </div>
                         {projects.map(project => {
                             return (
-                                <Link to={`/projects/${project.id}`} key={project.id} className="links">
+                                <Link to={`/todo-app/projects/${project.id}`} key={project.id} className="links">
                                 <div className="side-menu__projects-contents">
                                     <div 
                                         onClick={handleProjectClicked} 

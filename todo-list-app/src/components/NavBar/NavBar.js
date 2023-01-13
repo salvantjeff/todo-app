@@ -27,13 +27,13 @@ function NavBar({ setAddFormTaskActive, addTaskFormActive, logout }) {
         <nav className="nav-bar">
             <div className="left-buttons">
                 <div onClick={handleMenuClicked}><AiOutlineMenu/></div>
-                <Link to='/app/today' className='links'>
+                <Link to='/todo-app/today' className='links'>
                     <div><GrHomeRounded/></div>
                 </Link>
             </div>
             <div className="right-buttons">
                 <div onClick={handleAddTaskFormActive}><GrAdd /></div>
-                <Link to='/' className='links'>
+                <Link to='/todo-app' className='links'>
                     <div className='logout-button' onClick={logout}>log out</div>
                 </Link>
                 <div className="profile-image-container">

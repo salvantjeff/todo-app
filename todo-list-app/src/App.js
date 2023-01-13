@@ -93,7 +93,7 @@ function App() {
     };
     if (user) {
       console.log('navigating to home page');
-      navigate("/sections/inbox");
+      navigate("/todo-app/sections/inbox");
     };
   }, [user, loading]);
 
@@ -516,7 +516,7 @@ function App() {
                 {/* <Header /> */}
                 <Routes>
                   <Route 
-                    path='/'
+                    path='/todo-app'
                     element={
                       <AuthenticationPage 
                         signInWithGoogle={handleSignInGoogleButtonClick}
@@ -524,7 +524,7 @@ function App() {
                     }
                   />
                   <Route 
-                    path='/app/today' 
+                    path='/todo-app/today' 
                     element={<Home 
                       todoSections={todoSections} 
                       setTodoSections={setTodoSections}
@@ -539,7 +539,7 @@ function App() {
                     />}
                   />
                   <Route 
-                    path='/projects/:id' 
+                    path='/todo-app/projects/:id' 
                     element={<ProjectsDetail 
                       projects={projects} 
                       setProjects={setProjects} 
@@ -554,7 +554,7 @@ function App() {
                     />}
                   />
                   <Route 
-                    path='/sections/:id' 
+                    path='/todo-app/sections/:id' 
                     element={<TodoSections 
                       todoSections={todoSections} 
                       setTodoSections={setTodoSections}
