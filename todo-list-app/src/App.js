@@ -558,12 +558,16 @@ function App() {
     toggleEditForm();
   };
 
+  function handleLogout() {
+    logout();
+  };
+
   return (
     <div className="App">
         <NavBar 
           addTaskFormActive={addTaskFormActive} 
           setAddFormTaskActive={setAddFormTaskActive}
-          logout={logout}
+          logout={handleLogout}
         />
         <div className="content-wrapper">
           <main className="main-content">
