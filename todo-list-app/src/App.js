@@ -98,7 +98,7 @@ function App() {
   }, [user, loading]);
 
   function handleSignInGoogleButtonClick() {
-    signInWithGoogle();
+    // signInWithGoogle();
   };
   
   const inboxID = "inbox";
