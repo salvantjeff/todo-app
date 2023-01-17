@@ -29,6 +29,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const collectionRef = collection(db, 'users');
 
 const googleProvider = new GoogleAuthProvider();
 auth.languageCode = 'it';
@@ -38,16 +39,16 @@ async function continueWithGoogle() {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
-    // const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    // const docs = await getDocs(q);
-    // if (docs.docs.length === 0) {
-    //   await addDoc(collection(db, "users"), {
-    //     uid: user.uid,
-    //     name: user.displayName,
-    //     authProvider: "google",
-    //     email: user.email,
-    //   });
-    // }
+    const q = query(collectionRef, where("uid", "==", user.uid));
+    const docs = await getDocs(q);
+    if (docs.docs.length === 0) {
+      await addDoc(collectionRef, {
+        uid: user.uid,
+        name: user.displayName,
+        email: user.email,
+        authProvider: "google",
+      });
+    }
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -74,11 +75,12 @@ async function signup(email, password) {
     const user = userCredential.user;
     console.log('SUCCESS: your account has been created');
     console.log(user);
-    // await addDoc(collection(db, "users"), {
-    //   uid: user.uid,
-    //   authProvider: "local",
-    //   email,
-    // });
+    await addDoc(collectionRef, {
+      uid: user.uid,
+      email: email,
+      password: password,
+      authProvider: "local",
+    });
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
