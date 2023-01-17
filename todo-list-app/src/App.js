@@ -31,6 +31,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import SignInPage from './components/AuthenticationPage/SignInPage/SignInPage';
 import SignUpPage from './components/AuthenticationPage/SignUpPage/SignUpPage';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 const prioritiesList = [
   {
@@ -642,6 +643,7 @@ function App() {
                       handleEditClicked={handleEditClicked}
                     />}
                   />
+                  <Route path='*' element={<ErrorPage />} />
                 </Routes>
                 <LeftSideMenu 
                   todoSections={todoSections}
