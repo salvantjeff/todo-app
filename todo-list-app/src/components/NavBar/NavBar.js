@@ -33,7 +33,7 @@ function NavBar({ setAddFormTaskActive, addTaskFormActive, logout }) {
             </div>
             <div className="right-buttons">
                 <div onClick={handleAddTaskFormActive}><GrAdd /></div>
-                <Link to='/todo-app' className='links'>
+                <Link to='/todo-app/signin' className='links'>
                     <div className='logout-button' onClick={logout}>log out</div>
                 </Link>
                 <div className="profile-image-container">
