@@ -22,6 +22,8 @@ Improvements to make:
 17. Add filter todo cards button (based on priority or recent date)
 18. Maybe change description to be a textarea on both add/editTaskForms
 19. Decide what default todo cards to display when user 1st logs in
+20. Password reset abilities
+21. Add loading spinner in between routing and when first loading page
 =======================================================================
 Improvements currently working on:
 7. Change inbox id to 'app/inbox' and make it the home page not today

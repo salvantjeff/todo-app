@@ -7,7 +7,7 @@ import LeftSideMenu from './components/LeftSideMenu/LeftSideMenu';
 import NavBar from './components/NavBar/NavBar';
 import TodosList from './data/TodosList.json';
 import { v4 as uuidv4 } from 'uuid';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import ProjectsDetail from './components/ProjectsDetail/ProjectsDetail';
 import TodoSections from './components/TodoSections/TodoSections';
 import AddProjectForm from './components/Forms/AddProjectForm/AddProjectForm';
@@ -21,13 +21,17 @@ import {
   BsFillStarFill,
   BsFillArrowRightCircleFill 
 } from 'react-icons/bs';
-import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
 import { 
   auth, 
-  signInWithGoogle,
+  login,
+  signup,
+  continueWithGoogle,
   logout
 } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import SignInPage from './components/AuthenticationPage/SignInPage/SignInPage';
+import SignUpPage from './components/AuthenticationPage/SignUpPage/SignUpPage';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 const prioritiesList = [
   {
@@ -97,10 +101,63 @@ function App() {
     };
   }, [user, loading]);
 
-  function handleSignInGoogleButtonClick() {
-    signInWithGoogle();
+
+  const [signInForm, setSignInForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  function handleOnChangeSignInForm(e) {
+    const newSignInForm = {
+      ...signInForm,
+      [e.target.name]: [e.target.value],
+    };
+    setSignInForm(newSignInForm);
   };
-  
+
+  async function handleSignInFormSubmit(e) {
+    e.preventDefault();
+    const [email] = [...signInForm.email];
+    const [password] = [...signInForm.password];
+
+    console.log('Signing in...');
+    login(email, password);
+    setSignInForm({
+      email: '',
+      password: '',
+    });
+  };
+
+  const [signUpForm, setSignUpForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  function handleOnChangeSignUpForm(e) {
+    const newSignUpForm = {
+      ...signUpForm,
+      [e.target.name]: [e.target.value],
+    };
+    setSignUpForm(newSignUpForm);
+  };
+
+  function handleSignUpFormSubmit(e) {
+    e.preventDefault();
+    const [email] = [...signUpForm.email];
+    const [password] = [...signUpForm.password];
+    
+    console.log('Registering you as new user...');
+    signup(email, password);
+    setSignUpForm({
+      email: '',
+      password: '',
+    });
+  };
+
+  function continueWithGoogleClicked() {
+    continueWithGoogle();
+  };
+    
   const inboxID = "inbox";
   const [projects, setProjects] = useState([
     {
@@ -502,24 +559,42 @@ function App() {
     toggleEditForm();
   };
 
+  function handleLogout() {
+    logout();
+  };
+
   return (
     <div className="App">
         <NavBar 
           addTaskFormActive={addTaskFormActive} 
           setAddFormTaskActive={setAddFormTaskActive}
-          logout={logout}
+          logout={handleLogout}
         />
         <div className="content-wrapper">
           <main className="main-content">
             <div className="main-content__wrapper">
               <div className="agenda-view">
-                {/* <Header /> */}
                 <Routes>
+                  <Route path='/todo-app' element={<Navigate to='/todo-app/signin'/>}/>
                   <Route 
-                    path='/todo-app'
+                    path='/todo-app/signin'
                     element={
-                      <AuthenticationPage 
-                        signInWithGoogle={handleSignInGoogleButtonClick}
+                      <SignInPage 
+                        signInForm={signInForm}
+                        handleOnChangeSignInForm={handleOnChangeSignInForm}
+                        handleSignInFormSubmit={handleSignInFormSubmit}
+                        continueWithGoogleClicked={continueWithGoogleClicked}
+                      />
+                    }
+                  />
+                  <Route 
+                    path='/todo-app/signup'
+                    element={
+                      <SignUpPage 
+                        signUpForm={signUpForm}
+                        handleOnChangeSignUpForm={handleOnChangeSignUpForm}
+                        handleSignUpFormSubmit={handleSignUpFormSubmit}
+                        continueWithGoogleClicked={continueWithGoogleClicked}
                       />
                     }
                   />
@@ -568,6 +643,7 @@ function App() {
                       handleEditClicked={handleEditClicked}
                     />}
                   />
+                  <Route path='*' element={<ErrorPage />} />
                 </Routes>
                 <LeftSideMenu 
                   todoSections={todoSections}
