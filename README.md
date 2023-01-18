@@ -1,6 +1,6 @@
 # todo-app
 
-## [Live Demo](https://salvantjeff.github.io/weather-forecast/)
+## [Live Demo](https://salvantjeff.github.io/todo-app/)
 ![Todo List Application](todo-list-app/public/todo-app-screenshot.png)
 
 ## Introduction
